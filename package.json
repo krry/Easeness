@@ -1,6 +1,7 @@
 {
   "name": "atmanauticom",
   "version": "1.0.0",
+  "license": "to chill",
   "scripts": {
     "dev": "next",
     "build": "next build",
