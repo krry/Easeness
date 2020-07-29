@@ -6,3 +6,5 @@ plug.vim
 .tags
 node_modules
 .next
+
+.vercel

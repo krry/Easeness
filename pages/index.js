@@ -14,7 +14,7 @@ export default function Index({ allPosts, preview }) {
     <>
       <Layout preview={preview}>
         <Head>
-          <title>Home | Atmanautica</title>
+          <title>Atmanautica</title>
         </Head>
         <Container>
           <Intro />
