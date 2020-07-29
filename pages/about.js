@@ -2,7 +2,7 @@ import Container from '../components/container'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
 import Head from 'next/head'
-import AboutContent from '../components/About'
+import AboutContent from '../components/about-content'
 
 export default function About({ preview }) {
   return (
