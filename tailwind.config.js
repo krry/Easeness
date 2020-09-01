@@ -29,4 +29,10 @@ module.exports = {
       },
     },
   },
+  purge: [
+    "./pages/**/*.js",
+    "./components/**/*.js",
+    "./lib/**/*.js",
+    "./styles/index.css"
+  ]
 }
