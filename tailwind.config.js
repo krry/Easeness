@@ -29,4 +29,14 @@ module.exports = {
       },
     },
   },
+  variants: {
+    // appearance: [],
+    // can help remove utility classes
+    // save most size by limiting color palette and breakpoints
+  },
+  plugins: [],
+  purge: [
+    './pages/**/*.{js,jsx,ts,tsx}',
+    './components/**/*.{js,jsx,ts,tsx}',
+  ]
 }
