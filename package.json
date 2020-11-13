@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "deploy": "next export",
+    "deploy-static": "next export",
     "start": "next start"
   },
   "dependencies": {

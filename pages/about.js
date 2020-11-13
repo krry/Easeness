@@ -8,7 +8,7 @@ export default function About({ preview }) {
     <>
       <Layout preview={preview}>
         <Head>
-          <title>About Atmanautica</title>
+          <title>About Easeness</title>
         </Head>
         <Container>
           <AboutContent />

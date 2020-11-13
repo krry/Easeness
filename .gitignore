@@ -7,3 +7,4 @@ plug.vim
 node_modules
 .next
 .vercel
+out
