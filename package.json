@@ -6,12 +6,15 @@
     "dev": "next",
     "build": "next build",
     "deploy-static": "next export",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint --fix .",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "2.0.7",
     "@sanity/client": "1.149.2",
     "@sanity/image-url": "0.140.17",
+    "axios": "^0.21.0",
     "classnames": "2.2.6",
     "date-fns": "2.10.0",
     "next": "latest",
@@ -21,5 +24,24 @@
   "devDependencies": {
     "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^1.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && yarn format",
+      "post-commit": "yarn tag",
+      "pre-push": "yarn test"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
