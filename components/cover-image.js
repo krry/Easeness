@@ -2,7 +2,7 @@ import cn from 'classnames'
 import Link from 'next/link'
 import { imageBuilder } from '../lib/sanity'
 
-export default function CoverImage({ title, url, slug }) {
+export default function CoverImage({ title, url, slug, type }) {
   const image = (
     <img
       width={2000}
@@ -14,11 +14,11 @@ export default function CoverImage({ title, url, slug }) {
       src={imageBuilder.image(url).height(1000).width(2000).url()}
     />
   )
-
+  const dir = type === "post" ? "/posts" : ""
   return (
     <div className="-mx-5 sm:mx-0">
       {slug ? (
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
+        <Link as={`${dir}/${slug}`} href={dir +"/[slug]"}>
           <a aria-label={title}>{image}</a>
         </Link>
       ) : (

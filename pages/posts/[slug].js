@@ -1,16 +1,18 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
+import Head from 'next/head'
+import Layout from '../../components/layout'
+import Header from '../../components/header'
 import Container from '../../components/container'
 import PostBody from '../../components/post-body'
-import MoreStories from '../../components/more-stories'
-import Header from '../../components/header'
+import MoreDocs from '../../components/more-docs'
+import PostTitle from '../../components/post-title'
 import PostHeader from '../../components/post-header'
 import SectionSeparator from '../../components/section-separator'
-import Layout from '../../components/layout'
-import { getAllDocsWithSlug, getPostAndMorePosts } from '../../lib/api'
-import PostTitle from '../../components/post-title'
-import Head from 'next/head'
-// import { CMS_NAME } from '../../lib/constants'
+import {
+  getAllDocsWithSlug,
+  getPostAndMorePosts
+} from '../../lib/api'
 
 export default function Post({ post, morePosts, preview }) {
   const router = useRouter()
@@ -27,10 +29,10 @@ export default function Post({ post, morePosts, preview }) {
           <>
             <article>
               <Head>
-                <title>
-                  {post.title} | Surfing Atmanautica
-                </title>
-                {/* <meta property="og:image" content={post.ogImage.url} /> */}
+                <title>{post.title}</title>
+                { post.ogImage && (
+                  <meta property="og:image" content={post.ogImage.url} />
+                )}
               </Head>
               <PostHeader
                 title={post.title}
@@ -41,7 +43,7 @@ export default function Post({ post, morePosts, preview }) {
               <PostBody content={post.content} />
             </article>
             <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+            {morePosts.length > 0 && <MoreDocs docs={morePosts} type={"post"}/>}
           </>
         )}
       </Container>
