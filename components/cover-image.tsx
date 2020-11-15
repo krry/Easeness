@@ -5,7 +5,7 @@ import { imageBuilder } from '../lib/sanity'
 type CIProps = {
   title: string,
   url: string,
-  slug: string,
+  slug?: string,
   type?: string
 }
 

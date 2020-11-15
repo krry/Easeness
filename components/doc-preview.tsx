@@ -18,15 +18,15 @@ const DocPreview = ({
       <div className="mb-5">
         <CoverImage slug={slug} title={title} url={coverImage} type={type} />
       </div>
-      <h3 className="text-3xl mb-3 leading-snug">
+      <h3 className="mb-3 text-3xl leading-snug">
         <Link as={`${dir}/${slug}`} href={dir + "/[slug]"}>
-          <a className="hover:underline">{title}</a>
+          <a className="transition-colors duration-200 hover:underline hover:text-fuchsia-500">{title}</a>
         </Link>
       </h3>
-      <div className="text-lg mb-4">
+      <div className="mb-4 text-lg">
         <Date dateString={date} />
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+      <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>
       <Avatar name={author.name} picture={author.avatar} />
     </div>
   )

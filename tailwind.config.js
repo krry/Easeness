@@ -5,14 +5,32 @@ module.exports = {
         'accent-1': '#FAFAFA',
         'accent-2': '#EAEAEA',
         'accent-7': '#333',
-        success: '#0070f3',
-        cyan: '#79FFE1',
+        info: '#0070f3',
+        cyan: {
+          100: "#d9f7f3",
+          200: "#b2eee6",
+          300: "#8ce6da",
+          400: "#65ddcd",
+          500: "#3fd5c1",
+          600: "#32aa9a",
+          700: "#268074",
+          800: "#19554d",
+          900: "#0d2b27"
+        },
+        fuchsia: {
+          100: "#ffd9f7",
+          200: "#ffb2ee",
+          300: "#ff8ce6",
+          400: "#ff65dd",
+          500: "#ff3fd5",
+          600: "#cc32aa",
+          700: "#992680",
+          800: "#661955",
+          900: "#330d2b"
+        },
       },
       spacing: {
         28: '7rem',
-      },
-      letterSpacing: {
-        tighter: '-.04em',
       },
       lineHeight: {
         tight: 1.2,
