@@ -4,7 +4,7 @@ import BlockContent from '@sanity/block-content-to-react'
 const dataset = 'production'
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 
-export default function PageBody({ content }) {
+const PageBody = ({ content }) => {
   return (
     <div className="max-w-2xl mx-auto">
       <BlockContent
@@ -16,3 +16,5 @@ export default function PageBody({ content }) {
     </div>
   )
 }
+
+export default PageBody

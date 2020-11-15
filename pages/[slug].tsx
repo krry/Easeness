@@ -13,8 +13,9 @@ import {
   getPagesBySlug,
   getAllDocsWithSlug
 } from '../lib/api'
+import { GetStaticProps, GetStaticPaths } from 'next'
 
-export default function Page({ page, morePages, preview }) {
+const Page = ({ page, morePages, preview }) => {
   const router = useRouter()
   if (!router.isFallback && (!page?.slug || !page?.title)) {
     return <ErrorPage statusCode={404} />
@@ -48,7 +49,7 @@ export default function Page({ page, morePages, preview }) {
   )
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   const data = await getPagesBySlug(params.slug, preview)
   return {
     props: {
@@ -59,7 +60,7 @@ export async function getStaticProps({ params, preview = false }) {
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const allPages = await getAllDocsWithSlug('page')
   console.log('allPages', allPages)
   return {
@@ -72,3 +73,5 @@ export async function getStaticPaths() {
     fallback: true,
   }
 }
+
+export default Page

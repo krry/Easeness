@@ -13,8 +13,9 @@ import {
   getAllDocsWithSlug,
   getPostAndMorePosts
 } from '../../lib/api'
+import { GetStaticProps, GetStaticPaths } from 'next'
 
-export default function Post({ post, morePosts, preview }) {
+const Post = ({ post, morePosts, preview }) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -51,7 +52,7 @@ export default function Post({ post, morePosts, preview }) {
   )
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
   const data = await getPostAndMorePosts(params.slug, preview)
   return {
     props: {
@@ -62,7 +63,7 @@ export async function getStaticProps({ params, preview = false }) {
   }
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllDocsWithSlug('post')
   return {
     paths:
@@ -74,3 +75,5 @@ export async function getStaticPaths() {
     fallback: true,
   }
 }
+
+export default Post

@@ -2,7 +2,15 @@ import cn from 'classnames'
 import Link from 'next/link'
 import { imageBuilder } from '../lib/sanity'
 
-export default function CoverImage({ title, url, slug, type }) {
+type CIProps = {
+  title: string,
+  url: string,
+  slug: string,
+  type?: string
+}
+
+const CoverImage = (props: CIProps) => {
+  const {title, url, slug, type} = props
   const image = (
     <img
       width={2000}
@@ -27,3 +35,5 @@ export default function CoverImage({ title, url, slug, type }) {
     </div>
   )
 }
+
+export default CoverImage

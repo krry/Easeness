@@ -1,6 +1,6 @@
 import DocPreview from './doc-preview'
 
-export default function MoreDocs({ type, docs }) {
+const MoreDocs = ({ type, docs }) => {
   const typeLabel = type.charAt(0).toUpperCase() + type.slice(1)
   return (
     <section>
@@ -24,3 +24,5 @@ export default function MoreDocs({ type, docs }) {
     </section>
   )
 }
+
+export default MoreDocs

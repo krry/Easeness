@@ -1,9 +1,9 @@
-import Avatar from './avatar'
-import Date from './date'
-import CoverImage from './cover-image'
 import Link from 'next/link'
+import Date from './date'
+import Avatar from './avatar'
+import CoverImage from './cover-image'
 
-export default function DocPreview({
+const DocPreview = ({
   title,
   coverImage,
   date,
@@ -11,7 +11,7 @@ export default function DocPreview({
   excerpt,
   author,
   slug,
-}) {
+}) => {
   const dir = type === "post" ? "/posts" : ""
   return (
     <div>
@@ -31,3 +31,5 @@ export default function DocPreview({
     </div>
   )
 }
+
+export default DocPreview

@@ -1,6 +1,7 @@
+import { __ApiPreviewProps } from 'next/dist/next-server/server/api-utils'
 import { getPreviewPostBySlug } from '../../lib/api'
 
-export default async function preview(req, res) {
+const preview = async (req, res) => {
   // Check the secret and next parameters
   // This secret should only be known to this API route and the CMS
   if (
@@ -26,3 +27,5 @@ export default async function preview(req, res) {
   res.writeHead(307, { Location: `/posts/${post.slug}` })
   res.end()
 }
+
+export default preview

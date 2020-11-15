@@ -5,9 +5,10 @@ import Intro from '../components/intro'
 import Layout from '../components/layout'
 import { getAllDocsForHome } from '../lib/api'
 import Head from 'next/head'
+import { GetStaticProps } from 'next'
 // import { CMS_NAME } from '../lib/constants'
 
-export default function Index({ allPosts, allPages, preview }) {
+const Index = ({ allPosts, allPages, preview }) => {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
   const morePages = allPages.slice(1)
@@ -37,10 +38,12 @@ export default function Index({ allPosts, allPages, preview }) {
   )
 }
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const allPosts = await getAllDocsForHome('post', preview)
   const allPages = await getAllDocsForHome('page', preview)
   return {
     props: { allPosts, allPages, preview },
   }
 }
+
+export default Index
