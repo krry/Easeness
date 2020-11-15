@@ -3,14 +3,13 @@
     "prettier",
     "prettier/react",
     "eslint:recommended",
-    "eslint-config-airbnb",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
+    "plugin:jsx-a11y/recommended",
     "prettier/@typescript-eslint",
     "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
   ],
   "env": {
     "commonjs": true,
@@ -22,8 +21,8 @@
   },
   "plugins": [
     "prettier",
-    "eslint-plugin-react",
-    "simple-import-sort"
+    "simple-import-sort",
+    "eslint-plugin-react"
   ],
   "rules": {
     "prettier/prettier": ["error", {}, {
