@@ -1,4 +1,4 @@
-import client, { previewClient } from './sanity'
+import client, {previewClient} from './sanity'
 
 const getUniqueDocs = (docs) => {
   const slugs = new Set()
@@ -22,34 +22,40 @@ const postFields = `
   'author': author->{name, 'avatar': avatar.asset->url},
 `
 
-const getClient = (preview) => (preview ? previewClient : client)
+const getClient = (preview: boolean) => {
+  return preview ? previewClient : client
+}
 
-export const getAllDocsWithSlug = async (docType) => {
+export const getAllDocsWithSlug = async (docType: string) => {
   const data = await client.fetch(`
     *[_type == '${docType}']{ 'slug': slug.current }
   `)
   return data
 }
 
-export const getPreviewPostBySlug = async (slug) => {
-  const data = await getClient(true).fetch(`
+export const getPreviewPostBySlug = async (slug: string) => {
+  const data = await getClient(true).fetch(
+    `
     *[_type == "post" && slug.current == $slug] | order(date desc){
       ${postFields}
       content
-    }`, {slug})
+    }`,
+    {slug},
+  )
   return data[0]
 }
 
-export const getAllPostsWithSlug =  async () => {
+export const getAllPostsWithSlug = async () => {
   const data = await client.fetch(`
     *[_type == "post"]{
       'slug': slug.current
     }`)
+  console.log(typeof data)
   return data
 }
 
-export const getAllDocsForHome = async (docType, preview) => {
-  const fieldString = docType + "Fields"
+export const getAllDocsForHome = async (docType: string, preview: boolean) => {
+  const fieldString = docType + 'Fields'
   const results = await getClient(preview).fetch(`
     *[_type == "${docType}"] | order(date desc, _updatedAt desc) {
       ${eval(fieldString)}
@@ -57,21 +63,29 @@ export const getAllDocsForHome = async (docType, preview) => {
   return getUniqueDocs(results)
 }
 
-export const getPostAndMorePosts = async (slug, preview) => {
+export const getPostAndMorePosts = async (slug: string | string[], preview: boolean) => {
   const curClient = getClient(preview)
   const [post, morePosts] = await Promise.all([
-    curClient.fetch(`
+    curClient
+      .fetch(
+        `
       *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) {
         ${postFields}
         content,
-      }`, {slug}).then((res) => res?.[0]),
-    curClient.fetch(`
+      }`,
+        {slug},
+      )
+      .then((res) => res?.[0]),
+    curClient.fetch(
+      `
       *[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc) {
         ${postFields}
         content,
-      }[0...2]`, {slug}),
+      }[0...2]`,
+      {slug},
+    ),
   ])
-  return { post, morePosts: getUniqueDocs(morePosts) }
+  return {post, morePosts: getUniqueDocs(morePosts)}
 }
 
 const pageFields = `
@@ -86,19 +100,27 @@ const pageFields = `
   'coverImage': coverImage.asset->url,
 `
 
-export const getPagesBySlug = async (slug, preview) => {
+export const getPagesBySlug = async (slug: string | string[], preview: boolean) => {
   const curClient = getClient(preview)
   const [page, morePages] = await Promise.all([
-    curClient.fetch(`
+    curClient
+      .fetch(
+        `
       *[_type == 'page' && slug.current == '${slug}'] {
         ${pageFields}
         content
-      }`, {slug}).then((res) => res?.[0]),
-    curClient.fetch(`
+      }`,
+        {slug},
+      )
+      .then((res) => res?.[0]),
+    curClient.fetch(
+      `
       *[_type == 'page' && slug.current != '${slug}'] | order(date desc, _updatedAt desc) {
         ${pageFields}
         content
-      }[0...2]`, {slug}),
+      }[0...2]`,
+      {slug},
+    ),
   ])
-  return { page, morePages: getUniqueDocs(morePages) }
+  return {page, morePages: getUniqueDocs(morePages)}
 }

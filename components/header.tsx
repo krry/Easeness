@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SITE_TITLE } from '../lib/constants'
+import {SITE_TITLE} from '../lib/constants'
 
 const Header = () => {
   return (

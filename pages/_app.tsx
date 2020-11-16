@@ -1,7 +1,7 @@
-import type { AppProps /*, AppContext */ } from 'next/app'
+import type {AppProps /*, AppContext */} from 'next/app'
 import '../styles/index.css'
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({Component, pageProps}: AppProps) => {
   return <Component {...pageProps} />
 }
 

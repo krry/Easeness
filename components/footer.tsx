@@ -1,6 +1,6 @@
 import Container from './container'
 import Link from 'next/link'
-import { SITE_TITLE } from '../lib/constants'
+import {SITE_TITLE} from '../lib/constants'
 
 const Footer = () => {
   return (
@@ -13,18 +13,22 @@ const Footer = () => {
           <div className="flex flex-col items-center justify-center lg:flex-row lg:pl-4 lg:w-1/2">
             <a
               href="https://passage.atmanaut.us"
-              className="mx-3 font-bold transition-colors duration-200 hover:underline hover:text-fuchsia-600"
-            >
+              className="mx-3 font-bold transition-colors duration-200 hover:underline hover:text-fuchsia-600">
               Passage
             </a>
             <a
               href={`https://atmanaut.me/`}
-              className="mx-3 font-bold transition-colors duration-200 hover:underline hover:text-fuchsia-600"
-            >
+              className="mx-3 font-bold transition-colors duration-200 hover:underline hover:text-fuchsia-600">
               Atmanaut Blog
             </a>
             <span className="mx-3 font-bold">
-              An <a href="https://atmanautica.com" className="transition-colors duration-200 hover:underline hover:text-fuchsia-600">Atmanautica</a> Exploration
+              An{' '}
+              <a
+                href="https://atmanautica.com"
+                className="transition-colors duration-200 hover:underline hover:text-fuchsia-600">
+                Atmanautica
+              </a>{' '}
+              Exploration
             </span>
           </div>
         </div>

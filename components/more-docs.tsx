@@ -1,6 +1,6 @@
 import DocPreview from './doc-preview'
 
-const MoreDocs = ({ type, docs }) => {
+const MoreDocs = ({type, docs}) => {
   const typeLabel = type.charAt(0).toUpperCase() + type.slice(1)
   return (
     <section>

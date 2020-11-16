@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
 import Layout from '../../components/layout'
@@ -9,13 +9,10 @@ import MoreDocs from '../../components/more-docs'
 import PostTitle from '../../components/post-title'
 import PostHeader from '../../components/post-header'
 import SectionSeparator from '../../components/section-separator'
-import {
-  getAllDocsWithSlug,
-  getPostAndMorePosts
-} from '../../lib/api'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import {getAllDocsWithSlug, getPostAndMorePosts} from '../../lib/api'
+import {GetStaticProps, GetStaticPaths} from 'next'
 
-const Post = ({ post, morePosts, preview }) => {
+const Post = ({post, morePosts, preview}) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -31,9 +28,7 @@ const Post = ({ post, morePosts, preview }) => {
             <article>
               <Head>
                 <title>{post.title}</title>
-                { post.ogImage && (
-                  <meta property="og:image" content={post.ogImage.url} />
-                )}
+                {post.ogImage && <meta property="og:image" content={post.ogImage.url} />}
               </Head>
               <PostHeader
                 title={post.title}
@@ -44,7 +39,7 @@ const Post = ({ post, morePosts, preview }) => {
               <PostBody content={post.content} />
             </article>
             <SectionSeparator />
-            {morePosts.length > 0 && <MoreDocs docs={morePosts} type={"post"}/>}
+            {morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
           </>
         )}
       </Container>
@@ -52,7 +47,7 @@ const Post = ({ post, morePosts, preview }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
+export const getStaticProps: GetStaticProps = async ({params, preview = false}) => {
   const data = await getPostAndMorePosts(params.slug, preview)
   return {
     props: {

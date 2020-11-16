@@ -3,7 +3,7 @@ import Date from './date'
 import CoverImage from './cover-image'
 import PostTitle from './post-title'
 
-const PostHeader = ({ title, coverImage, date, author }) => {
+const PostHeader = ({title, coverImage, date, author}) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>

@@ -1,5 +1,5 @@
-import React, {Fragment, useRef, useEffect, useState} from 'react'
 import cn from 'classnames'
+import React, {Fragment, useEffect, useRef, useState} from 'react'
 
 const ThemeSwitch = ({preserveRasters = true, storeKey = 'ThemeSwitch'}) => {
   const cssString = `html { background-color: #fafafa; filter: invert(100%); }
@@ -23,13 +23,12 @@ const ThemeSwitch = ({preserveRasters = true, storeKey = 'ThemeSwitch'}) => {
 
   const [css, setCss] = useState(cssString)
 
-  const [active, setActive] =
+  const [active, setActive] = useState(
     typeof window !== 'undefined'
-      ? useState(
-          localStorage.getItem(storeKey) === 'true' ||
-            (!localStorage.getItem(storeKey) && matchMedia('(prefers-color-scheme: dark)').matches),
-        )
-      : useState(false)
+      ? localStorage.getItem(storeKey) === 'true' ||
+          (!localStorage.getItem(storeKey) && matchMedia('(prefers-color-scheme: dark)').matches)
+      : false,
+  )
 
   useEffect(() => {
     if (preserveRasters) {
@@ -38,7 +37,7 @@ const ThemeSwitch = ({preserveRasters = true, storeKey = 'ThemeSwitch'}) => {
     return () => {
       setCss(cssString)
     }
-  }, [preserveRasters])
+  }, [preserveRasters, cssString])
 
   useEffect(() => {
     localStorage.setItem(storeKey, `${active}`)
@@ -61,7 +60,7 @@ const ThemeSwitch = ({preserveRasters = true, storeKey = 'ThemeSwitch'}) => {
           style={{
             borderRadius: '100%',
             fontSize: '3rem',
-            lineHeight: '1rem',
+            lineHeight: '1em',
           }}>
           <span>{active ? '🌝' : '🌚'}</span>
           <span aria-hidden="true" hidden>

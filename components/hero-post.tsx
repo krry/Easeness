@@ -3,14 +3,7 @@ import Date from './date'
 import CoverImage from './cover-image'
 import Link from 'next/link'
 
-const HeroPost = ({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}) => {
+const HeroPost = ({title, coverImage, date, excerpt, author, slug}) => {
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -20,7 +13,9 @@ const HeroPost = ({
         <div>
           <h3 className="mb-4 text-4xl leading-tight lg:text-6xl">
             <Link as={`/posts/${slug}`} href="/posts/[slug]">
-              <a className="transition-colors duration-200 hover:underline hover:text-fuchsia-600">{title}</a>
+              <a className="transition-colors duration-200 hover:underline hover:text-fuchsia-600">
+                {title}
+              </a>
             </Link>
           </h3>
           <div className="mb-4 text-lg md:mb-0">

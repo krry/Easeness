@@ -1,4 +1,4 @@
-import { CMS_NAME, CMS_URL } from '../lib/constants'
+import {CMS_NAME, CMS_URL} from '../lib/constants'
 
 const Intro = () => {
   return (
@@ -10,15 +10,13 @@ const Intro = () => {
         Bringing ease to business with{' '}
         <a
           href="https://atmanautica.com/"
-          className="transition-colors duration-200 hover:underline hover:text-fuchsia-600"
-        >
+          className="transition-colors duration-200 hover:underline hover:text-fuchsia-600">
           Atmanautica
         </a>{' '}
         and{' '}
         <a
           href={CMS_URL}
-          className="transition-colors duration-200 hover:underline hover:text-fuchsia-600"
-        >
+          className="transition-colors duration-200 hover:underline hover:text-fuchsia-600">
           {CMS_NAME}
         </a>
         .

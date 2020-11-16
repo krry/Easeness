@@ -3,7 +3,7 @@ import Date from './date'
 import CoverImage from './cover-image'
 import PostTitle from './post-title'
 
-const PostHeader = ({ title, coverImage, date, author }) => {
+const PostHeader = ({title, coverImage, date, author}) => {
   return (
     <section className="my-16 md:my-12">
       <PostTitle>{title}</PostTitle>
