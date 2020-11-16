@@ -7,26 +7,26 @@ module.exports = {
         'accent-7': '#333',
         info: '#0070f3',
         cyan: {
-          100: "#d9f7f3",
-          200: "#b2eee6",
-          300: "#8ce6da",
-          400: "#65ddcd",
-          500: "#3fd5c1",
-          600: "#32aa9a",
-          700: "#268074",
-          800: "#19554d",
-          900: "#0d2b27"
+          100: '#d9f7f3',
+          200: '#b2eee6',
+          300: '#8ce6da',
+          400: '#65ddcd',
+          500: '#3fd5c1',
+          600: '#32aa9a',
+          700: '#268074',
+          800: '#19554d',
+          900: '#0d2b27',
         },
         fuchsia: {
-          100: "#ffd9f7",
-          200: "#ffb2ee",
-          300: "#ff8ce6",
-          400: "#ff65dd",
-          500: "#ff3fd5",
-          600: "#cc32aa",
-          700: "#992680",
-          800: "#661955",
-          900: "#330d2b"
+          100: '#ffd9f7',
+          200: '#ffb2ee',
+          300: '#ff8ce6',
+          400: '#ff65dd',
+          500: '#ff3fd5',
+          600: '#cc32aa',
+          700: '#992680',
+          800: '#661955',
+          900: '#330d2b',
         },
       },
       spacing: {
@@ -53,10 +53,7 @@ module.exports = {
     // save most size by limiting color palette and breakpoints
   },
   plugins: [],
-  purge: [
-    './pages/**/*.{js,jsx,ts,tsx}',
-    './components/**/*.{js,jsx,ts,tsx}',
-  ]
+  purge: ['./pages/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
 }
 
 // Default configuration
