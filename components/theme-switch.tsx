@@ -53,7 +53,7 @@ const ThemeSwitch = ({preserveRasters = true, storeKey = 'ThemeSwitch'}) => {
         <button
           type="button"
           className={cn(
-            'moonface opacity-50 hover:opacity-100 transition-opacity duration-500 rounded-full text-4xl m-3',
+            'moonface opacity-75 hover:opacity-100 transition-opacity duration-500 rounded-full text-4xl m-3',
             {
               glow: active,
             },
