@@ -42,6 +42,6 @@
 }
 
 .markdown blockquote:before {
-  content: "❝";
+  content: '❝';
   @apply px-2 font-sans text-6xl text-teal-500 opacity-50;
 }
