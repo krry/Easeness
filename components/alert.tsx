@@ -21,14 +21,7 @@ const Alert = ({preview}) => {
               </a>
             </>
           ) : (
-            <>
-              <p>
-                <span>Hiya </span>
-                <span role="img" aria-label="starry eyes" className="cursor-not-allowed">
-                  🤩
-                </span>
-              </p>
-            </>
+            <ThemeSwitch />
           )}
         </div>
       </Container>

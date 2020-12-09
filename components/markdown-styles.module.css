@@ -4,9 +4,8 @@
 
 .markdown p,
 .markdown ul,
-.markdown ol,
-.markdown blockquote {
-  @apply my-6;
+.markdown ol {
+  @apply my-6 tracking-wide;
 }
 
 .markdown img {
@@ -14,7 +13,7 @@
 }
 
 .markdown p {
-  @apply mb-6 text-xl tracking-wide;
+  @apply mb-6 text-xl;
 }
 
 .markdown h1 {
@@ -29,6 +28,11 @@
   @apply mt-8 mb-4 text-2xl font-bold leading-snug;
 }
 
+.markdown ul,
+.markdown ol {
+  @apply ml-8;
+}
+
 .markdown ul > li {
   @apply list-disc;
 }
@@ -38,10 +42,18 @@
 }
 
 .markdown blockquote {
-  @apply ml-4 font-serif text-2xl italic font-semibold tracking-wide;
+  @apply relative mx-20 my-12 font-serif text-xl italic;
 }
 
 .markdown blockquote:before {
   content: '❝';
-  @apply px-2 font-sans text-6xl text-teal-500 opacity-50;
+  @apply absolute top-0 left-0 -mt-8 -ml-20 font-sans text-teal-500 opacity-50 text-7xl;
+}
+
+.markdown a {
+  @apply underline transition-colors duration-200 text-fuchsia-600;
+}
+
+.markdown a:hover {
+  @apply text-fuchsia-500;
 }

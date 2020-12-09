@@ -1,7 +1,5 @@
 import Link from 'next/link'
 
-import ThemeSwitch from './theme-switch'
-
 const PageNav = ({pages, classes}) => {
   return (
     pages.length > 0 && (
@@ -15,7 +13,6 @@ const PageNav = ({pages, classes}) => {
             ))}
           </ul>
         </nav>
-        <ThemeSwitch />
       </>
     )
   )

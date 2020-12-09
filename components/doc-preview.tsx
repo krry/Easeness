@@ -13,7 +13,7 @@ const DocPreview = ({title, coverImage, date, type, excerpt, author, slug}) => {
       </div>
       <h3 className="mb-3 text-3xl font-bold leading-snug tracking-tight">
         <Link as={`${dir}/${slug}`} href={dir + '/[slug]'}>
-          <a className="transition-colors duration-200 hover:underline hover:text-fuchsia-500">
+          <a className="transition-colors duration-200 hover:underline hover:text-fuchsia-600">
             {title}
           </a>
         </Link>
