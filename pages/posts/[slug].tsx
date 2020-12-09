@@ -1,16 +1,17 @@
-import {useRouter} from 'next/router'
+import {GetStaticPaths, GetStaticProps} from 'next'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
-import Layout from '../../components/layout'
-import Header from '../../components/header'
+import {useRouter} from 'next/router'
+
 import Container from '../../components/container'
-import PostBody from '../../components/post-body'
+import Header from '../../components/header'
+import Layout from '../../components/layout'
 import MoreDocs from '../../components/more-docs'
-import PostTitle from '../../components/post-title'
+import PostBody from '../../components/post-body'
 import PostHeader from '../../components/post-header'
+import PostTitle from '../../components/post-title'
 import SectionSeparator from '../../components/section-separator'
 import {getAllDocsWithSlug, getPostAndMorePosts} from '../../lib/api'
-import {GetStaticProps, GetStaticPaths} from 'next'
 
 const Post = ({post, morePosts, preview}) => {
   const router = useRouter()

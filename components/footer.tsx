@@ -1,6 +1,7 @@
-import Container from './container'
 import Link from 'next/link'
+
 import {SITE_TITLE} from '../lib/constants'
+import Container from './container'
 
 const Footer = () => {
   return (

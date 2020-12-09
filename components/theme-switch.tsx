@@ -4,7 +4,7 @@ import React, {Fragment, useEffect, useRef, useState} from 'react'
 const ThemeSwitch = ({preserveRasters = true, storeKey = 'ThemeSwitch'}) => {
   const cssString = `html { background-color: #fafafa; filter: invert(100%); }
         * { background-color: inherit; }
-        .glow.moonface { box-shadow: 0 0 10rem 3rem #FFFFBD; }`
+        .glow.moonface { box-shadow: 0 0 50rem 2rem #FFFFBD; }`
 
   const rasterCss =
     'img:not([src*=".svg"]), video, [style*="url("], .moonface {filter: invert(100%);}'
@@ -52,14 +52,15 @@ const ThemeSwitch = ({preserveRasters = true, storeKey = 'ThemeSwitch'}) => {
       <Fragment>
         <button
           type="button"
-          className={cn('moonface', {
-            glow: active,
-          })}
+          className={cn(
+            'moonface opacity-50 hover:opacity-100 transition-opacity duration-500 rounded-full text-4xl m-3',
+            {
+              glow: active,
+            },
+          )}
           aria-pressed={active}
           onClick={toggle}
           style={{
-            borderRadius: '100%',
-            fontSize: '3rem',
             lineHeight: '1em',
           }}>
           <span>{active ? '🌝' : '🌚'}</span>

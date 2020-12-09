@@ -17,8 +17,8 @@ const CoverImage = (props: CIProps) => {
       width={2000}
       height={1000}
       alt={`Cover for ${title}`}
-      className={cn('shadow-small', {
-        'hover:shadow-medium transition-shadow duration-200': slug,
+      className={cn('shadow-small', 'lg:rounded-bl-full', {
+        'hover:shadow-large transition-shadow duration-200': slug,
       })}
       src={imageBuilder.image(url).height(1000).width(2000).url()}
     />

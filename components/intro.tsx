@@ -1,26 +1,12 @@
-import {CMS_NAME, CMS_URL} from '../lib/constants'
+import PageNav from './page-nav'
 
-const Intro = () => {
+const Intro = ({pages}) => {
   return (
     <section className="flex flex-col items-center mt-16 mb-16 md:flex-row md:justify-between md:mb-12">
-      <h1 className="text-6xl font-bold leading-tight tracking-tighter md:text-8xl md:pr-8">
+      <h1 className="text-6xl font-bold leading-tight tracking-tighter md:text-8xl md:pr-8 lg:w-1/3">
         Easeness.
       </h1>
-      <h4 className="mt-5 text-lg tracking-tighter text-center md:text-left md:pl-8">
-        Bringing ease to business with{' '}
-        <a
-          href="https://atmanautica.com/"
-          className="transition-colors duration-200 hover:underline hover:text-fuchsia-600">
-          Atmanautica
-        </a>{' '}
-        and{' '}
-        <a
-          href={CMS_URL}
-          className="transition-colors duration-200 hover:underline hover:text-fuchsia-600">
-          {CMS_NAME}
-        </a>
-        .
-      </h4>
+      <PageNav classes="mt-5 text-xl text-center md:pl-8 lg:w-2/3 md:text-right" pages={pages} />
     </section>
   )
 }

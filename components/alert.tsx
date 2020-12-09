@@ -8,7 +8,7 @@ const Alert = ({preview}) => {
     <div
       className={cn('border-b', {
         'bg-cyan-300 border-cyan-600 text-white': preview,
-        'bg-white border-black': !preview,
+        'bg-white border-white': !preview,
       })}>
       <Container>
         <div className="py-2 text-center text-md">
@@ -22,7 +22,12 @@ const Alert = ({preview}) => {
             </>
           ) : (
             <>
-              <ThemeSwitch preserveRasters />
+              <p>
+                <span>Hiya </span>
+                <span role="img" aria-label="starry eyes" className="cursor-not-allowed">
+                  🤩
+                </span>
+              </p>
             </>
           )}
         </div>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import {SITE_TITLE} from '../lib/constants'
 
 const Header = () => {
