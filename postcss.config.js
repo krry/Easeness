@@ -2,7 +2,6 @@ module.exports = {
   plugins:
     process.env.NODE_ENV === 'production'
       ? {
-          'postcss-flexbugs-fixes': {},
           'postcss-advanced-variables': {},
           tailwindcss: {},
           'postcss-preset-env': {
