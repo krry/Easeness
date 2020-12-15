@@ -39,7 +39,7 @@ const Page = ({page, morePosts, preview, allPages}) => {
               <ArticleBody content={page.content} />
             </article>
             <SectionSeparator />
-            {morePosts && morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
+            {morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
           </>
         )}
       </Container>
@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps = async ({params, preview = false}) 
       preview,
       page: data || null,
       morePosts: allPosts.slice(0, 2) || [],
-      allPages,
+      allPages: allPages || null,
     },
   }
 }

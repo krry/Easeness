@@ -46,7 +46,7 @@ const Post = ({post, morePosts, preview, allPages}) => {
             <Form _id={post._id} />
 
             <SectionSeparator />
-            {morePosts && morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
+            {morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
           </>
         )}
       </Container>
@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps = async ({params, preview = false}) 
       preview,
       post: data?.post || null,
       morePosts: data?.morePosts || [],
-      allPages,
+      allPages: allPages || [],
     },
     revalidate: 1,
   }
