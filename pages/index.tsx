@@ -2,32 +2,32 @@ import {GetStaticProps} from 'next'
 import Head from 'next/head'
 
 import Container from '../components/container'
-import HeroPost from '../components/hero-post'
+import Hero from '../components/hero'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
 import MoreDocs from '../components/more-docs'
 import {getAllDocsForHome} from '../lib/api'
-// import { CMS_NAME } from '../lib/constants'
+import {SITE_TITLE} from '../lib/constants'
 
 const Index = ({allPosts, allPages, preview}) => {
-  const heroPost = allPosts[0]
+  const hero = allPosts[0]
   const morePosts = allPosts.slice(1)
   return (
     <>
       <Layout preview={preview}>
         <Head>
-          <title>Easeness.</title>
+          <title>{SITE_TITLE}.</title>
         </Head>
         <Container>
           <Intro pages={allPages} />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
+          {hero && (
+            <Hero
+              title={hero.title}
+              coverImage={hero.coverImage}
+              date={hero.date}
+              author={hero.author}
+              slug={hero.slug}
+              excerpt={hero.excerpt}
             />
           )}
           {morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}

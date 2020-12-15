@@ -4,16 +4,16 @@ import Head from 'next/head'
 import {useRouter} from 'next/router'
 
 import Container from '../components/container'
-import Header from '../components/header'
+import Header from '../components/site-header'
 import Layout from '../components/layout'
 import MoreDocs from '../components/more-docs'
-import PageBody from '../components/page-body'
-import PageHeader from '../components/page-header'
-import PostTitle from '../components/post-title'
+import ArticleBody from '../components/article-body'
+import ArticleHeader from '../components/article-header'
+import ArticleTitle from '../components/article-title'
 import SectionSeparator from '../components/section-separator'
-import {getAllDocsWithSlug, getPagesBySlug} from '../lib/api'
+import {getAllDocsWithSlug, getAllDocsForHome, getPageBySlug, getPostAndMorePosts} from '../lib/api'
 
-const Page = ({page, morePages, preview}) => {
+const Page = ({page, morePosts, preview, allPages}) => {
   const router = useRouter()
   if (!router.isFallback && (!page?.slug || !page?.title)) {
     return <ErrorPage statusCode={404} />
@@ -21,25 +21,25 @@ const Page = ({page, morePages, preview}) => {
   return (
     <Layout preview={preview}>
       <Container>
-        <Header />
+        <Header pages={allPages} />
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <ArticleTitle>Loading…</ArticleTitle>
         ) : (
           <>
             <article>
               <Head>
                 <title>{page.title}</title>
               </Head>
-              <PageHeader
+              <ArticleHeader
                 title={page.title}
                 coverImage={page.coverImage}
                 date={page.date}
                 author={page.author}
               />
-              <PageBody content={page.content} />
+              <ArticleBody content={page.content} />
             </article>
             <SectionSeparator />
-            {morePages.length > 0 && <MoreDocs docs={morePages} type={'page'} />}
+            {morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
           </>
         )}
       </Container>
@@ -48,19 +48,22 @@ const Page = ({page, morePages, preview}) => {
 }
 
 export const getStaticProps: GetStaticProps = async ({params, preview = false}) => {
-  const data = await getPagesBySlug(params.slug, preview)
+  const data = await getPageBySlug(params.slug, preview)
+  const allPages = await getAllDocsForHome('page', preview)
+  const allPosts = await getAllDocsForHome('post', preview)
+  const aps = allPosts.length
   return {
     props: {
       preview,
-      page: data?.page || null,
-      morePages: data?.morePages || null,
+      page: data || null,
+      morePosts: allPosts.slice(0, 2),
+      allPages,
     },
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPages = await getAllDocsWithSlug('page')
-  console.log('allPages', allPages)
   return {
     paths:
       allPages?.map((page) => ({

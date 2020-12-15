@@ -1,12 +1,12 @@
 import Avatar from './avatar'
 import CoverImage from './cover-image'
 import Date from './date'
-import PostTitle from './post-title'
+import ArticleTitle from './article-title'
 
-const PostHeader = ({title, coverImage, date, author}) => {
+const ArticleHeader = ({title, coverImage, date, author}) => {
   return (
-    <>
-      <PostTitle>{title}</PostTitle>
+    <section className="my-16 md:my-12">
+      <ArticleTitle>{title}</ArticleTitle>
       <div className="hidden md:block md:mb-12">
         <Avatar name={author.name} picture={author.avatar} />
       </div>
@@ -21,8 +21,8 @@ const PostHeader = ({title, coverImage, date, author}) => {
           <Date dateString={date} />
         </div>
       </div>
-    </>
+    </section>
   )
 }
 
-export default PostHeader
+export default ArticleHeader

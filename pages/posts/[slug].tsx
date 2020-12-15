@@ -1,19 +1,21 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
+import {useRouter} from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
-import {useRouter} from 'next/router'
 
 import Container from '../../components/container'
-import Header from '../../components/header'
+import SiteHeader from '../../components/site-header'
 import Layout from '../../components/layout'
 import MoreDocs from '../../components/more-docs'
-import PostBody from '../../components/post-body'
-import PostHeader from '../../components/post-header'
-import PostTitle from '../../components/post-title'
+import PostBody from '../../components/article-body'
+import PostHeader from '../../components/article-header'
+import PostTitle from '../../components/article-title'
+import Comments from '../../components/comments'
+import Form from '../../components/form'
 import SectionSeparator from '../../components/section-separator'
-import {getAllDocsWithSlug, getPostAndMorePosts} from '../../lib/api'
+import {getAllDocsForHome, getAllDocsWithSlug, getPostAndMorePosts} from '../../lib/api'
 
-const Post = ({post, morePosts, preview}) => {
+const Post = ({post, morePosts, preview, allPages}) => {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
@@ -21,7 +23,7 @@ const Post = ({post, morePosts, preview}) => {
   return (
     <Layout preview={preview}>
       <Container>
-        <Header />
+        <SiteHeader pages={allPages} />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -39,6 +41,10 @@ const Post = ({post, morePosts, preview}) => {
               />
               <PostBody content={post.content} />
             </article>
+
+            <Comments comments={post.comments} />
+            <Form _id={post._id} />
+
             <SectionSeparator />
             {morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
           </>
@@ -50,12 +56,15 @@ const Post = ({post, morePosts, preview}) => {
 
 export const getStaticProps: GetStaticProps = async ({params, preview = false}) => {
   const data = await getPostAndMorePosts(params.slug, preview)
+  const allPages = await getAllDocsForHome('page', preview)
   return {
     props: {
       preview,
       post: data?.post || null,
       morePosts: data?.morePosts || null,
+      allPages,
     },
+    revalidate: 1,
   }
 }
 

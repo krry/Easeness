@@ -100,27 +100,17 @@ const pageFields = `
   'coverImage': coverImage.asset->url,
 `
 
-export const getPagesBySlug = async (slug: string | string[], preview: boolean) => {
+export const getPageBySlug = async (slug: string | string[], preview: boolean) => {
   const curClient = getClient(preview)
-  const [page, morePages] = await Promise.all([
-    curClient
-      .fetch(
-        `
+  const [page] = await Promise.all([
+    curClient.fetch(
+      `
       *[_type == 'page' && slug.current == '${slug}'] {
         ${pageFields}
         content
       }`,
-        {slug},
-      )
-      .then((res) => res?.[0]),
-    curClient.fetch(
-      `
-      *[_type == 'page' && slug.current != '${slug}'] | order(date desc, _updatedAt desc) {
-        ${pageFields}
-        content
-      }[0...2]`,
       {slug},
     ),
   ])
-  return {page, morePages: getUniqueDocs(morePages)}
+  return page[0]
 }

@@ -4,7 +4,7 @@ import Avatar from './avatar'
 import CoverImage from './cover-image'
 import Date from './date'
 
-const HeroPost = ({title, coverImage, date, excerpt, author, slug}) => {
+const Hero = ({title, coverImage, date, excerpt, author, slug}) => {
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -32,4 +32,4 @@ const HeroPost = ({title, coverImage, date, excerpt, author, slug}) => {
   )
 }
 
-export default HeroPost
+export default Hero
