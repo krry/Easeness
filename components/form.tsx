@@ -2,7 +2,7 @@ import {useState} from 'react'
 import {useForm} from 'react-hook-form'
 
 export default function Form({_id}) {
-  const [formData, setFormData] = useState()
+  const [formData, setFormData] = useState({name: '', email: '', comment: ''})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const {register, handleSubmit, watch, errors} = useForm()
@@ -13,7 +13,7 @@ export default function Form({_id}) {
     const options: RequestInit = {
       method: 'POST',
       body: JSON.stringify(data),
-      type: 'application/json',
+      // type: 'application/json',
     }
     try {
       response = await fetch('/api/createComment', options)
