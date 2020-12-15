@@ -13,7 +13,6 @@
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint && yarn format",
-      "post-commit": "yarn tag",
       "pre-push": "yarn build"
     }
   },

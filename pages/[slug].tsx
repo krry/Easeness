@@ -39,7 +39,7 @@ const Page = ({page, morePosts, preview, allPages}) => {
               <ArticleBody content={page.content} />
             </article>
             <SectionSeparator />
-            {morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
+            {morePosts && morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
           </>
         )}
       </Container>
@@ -51,12 +51,11 @@ export const getStaticProps: GetStaticProps = async ({params, preview = false}) 
   const data = await getPageBySlug(params.slug, preview)
   const allPages = await getAllDocsForHome('page', preview)
   const allPosts = await getAllDocsForHome('post', preview)
-  const aps = allPosts.length
   return {
     props: {
       preview,
       page: data || null,
-      morePosts: allPosts.slice(0, 2),
+      morePosts: allPosts.slice(0, 2) || [],
       allPages,
     },
   }
