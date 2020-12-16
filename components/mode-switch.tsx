@@ -34,7 +34,7 @@ const ModeSwitch = () => {
     setMode(mode === 'light' ? 'dark' : 'light')
   }
   const modeBtnCns =
-    'opacity-75 hover:opacity-100 transition-opacity duration-500 rounded-full text-4xl m-3 sticky top-2'
+    'opacity-75 hover:opacity-100 transition-opacity duration-500 rounded-full text-4xl m-3 sticky top-2 outline-none'
   return (
     <Fragment>
       <button

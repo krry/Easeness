@@ -16,7 +16,7 @@
   }
 
   .pretty-heading {
-    @apply font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-fuchsia-600 dark:from-cyan-500 dark:to-fuchsia-500;
+    @apply font-bold leading-tight tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-fuchsia-600 dark:from-cyan-500 dark:to-fuchsia-500;
   }
 
   .pretty-link {
