@@ -1,35 +1,55 @@
 module.exports = {
-  darkMode: 'media',
+  darkMode: 'class',
   theme: {
-    extend: {
-      colors: {
-        'accent-1': '#FAFAFA',
-        'accent-2': '#EAEAEA',
-        'accent-7': '#333',
-        info: '#0070f3',
-        cyan: {
-          100: '#d9f7f3',
-          200: '#b2eee6',
-          300: '#8ce6da',
-          400: '#65ddcd',
-          500: '#3fd5c1',
-          600: '#32aa9a',
-          700: '#268074',
-          800: '#19554d',
-          900: '#0d2b27',
-        },
-        fuchsia: {
-          100: '#ffd9f7',
-          200: '#ffb2ee',
-          300: '#ff8ce6',
-          400: '#ff65dd',
-          500: '#ff3fd5',
-          600: '#cc32aa',
-          700: '#992680',
-          800: '#661955',
-          900: '#330d2b',
-        },
+    colors: {
+      black: '#05090a',
+      transparent: 'transparent',
+      gray: {
+        100: '#fefeff',
+        200: '#fbfbff',
+        300: '#ededef',
+        400: '#dadade',
+        500: '#cbcfd2',
+        600: '#c8cacb',
+        700: '#969798',
+        800: '#646566',
+        900: '#323233',
       },
+      cyan: {
+        100: '#d9f7f3',
+        200: '#b2eee6',
+        300: '#8ce6da',
+        400: '#65ddcd',
+        500: '#3fd5c1',
+        600: '#32aa9a',
+        700: '#268074',
+        800: '#19554d',
+        900: '#0d2b27',
+      },
+      lime: {
+        100: '#d6f5dd',
+        200: '#adebba',
+        300: '#84e198',
+        400: '#5bd775',
+        500: '#32cd53',
+        600: '#28a442',
+        700: '#1e7b32',
+        800: '#145221',
+        900: '#0a2911',
+      },
+      fuchsia: {
+        100: '#ffd9f7',
+        200: '#ffb2ee',
+        300: '#ff8ce6',
+        400: '#ff65dd',
+        500: '#ff3fd5',
+        600: '#cc32aa',
+        700: '#992680',
+        800: '#661955',
+        900: '#330d2b',
+      },
+    },
+    extend: {
       spacing: {
         28: '7rem',
       },
@@ -48,11 +68,7 @@ module.exports = {
       },
     },
   },
-  variants: {
-    // appearance: [],
-    // can help remove utility classes
-    // save most size by limiting color palette and breakpoints
-  },
+  variants: {},
   plugins: [],
   purge: ['./pages/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
 }
