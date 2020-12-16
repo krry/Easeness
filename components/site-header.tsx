@@ -4,10 +4,10 @@ import SiteNav from './site-nav'
 
 const SiteHeader = ({pages}) => {
   return (
-    <header className="flex items-baseline md:flex-row md:justify-between">
-      <h2 className="mt-8 mb-20 text-2xl font-bold leading-tight tracking-tight transition-colors duration-200 md:text-4xl md:tracking-tighter hover:text-fuchsia-600">
+    <header className="flex flex-row items-baseline sm:justify-between">
+      <h2 className="mt-8 mb-20 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter">
         <Link href="/">
-          <a className="hover:underline">{SITE_TITLE}</a>
+          <a className="pretty-link">{SITE_TITLE}</a>
         </Link>
         .
       </h2>

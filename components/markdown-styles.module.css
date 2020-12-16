@@ -8,28 +8,34 @@
   @apply my-6 text-xl tracking-wide font-serif;
 }
 
-.markdown img {
-  @apply rounded-tl-lg rounded-br-full;
+.markdown figure:nth-of-type(2n-1) {
+  @apply rounded-tl-lg rounded-br-full overflow-hidden;
 }
 
-.markdown img:nth-of-type(2n) {
-  @apply rounded-tr-lg rounded-bl-full;
+.markdown figure:nth-of-type(2n) {
+  @apply rounded-tr-lg rounded-bl-full overflow-hidden;
 }
 
 .markdown p {
   @apply mb-6;
 }
 
+.pretty-heading {
+  @apply font-bold leading-snug tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-fuchsia-600;
+}
+
 .markdown h1 {
-  @apply mt-16 mb-8 text-4xl font-bold leading-snug tracking-tight;
+  @apply mt-16 mb-8 text-4xl pretty-heading;
 }
 
 .markdown h2 {
-  @apply mt-12 mb-4 text-3xl font-bold leading-snug;
+  @apply mt-12 mb-4 text-3xl pretty-heading;
+  @apply bg-gradient-to-l;
 }
 
 .markdown h3 {
-  @apply mt-8 mb-4 text-2xl font-bold leading-snug;
+  @apply mt-8 mb-4 text-2xl pretty-heading;
+  @apply from-cyan-600 to-lime-600;
 }
 
 .markdown ul,
@@ -46,19 +52,30 @@
 }
 
 .markdown blockquote {
-  @apply relative mx-20 my-12 font-serif text-xl italic;
+  @apply relative md:mx-20 md:my-12 font-serif text-xl italic;
+
+  &::before,
+  &::after {
+    @apply absolute font-sans text-cyan-500 dark:text-cyan-400 opacity-50 text-7xl leading-none p-1;
+    @apply bg-clip-text bg-gradient-to-b from-lime-600 to-cyan-600 dark:from-lime-500 dark:to-cyan-500 text-transparent;
+  }
 
   &::before {
-    @apply absolute top-0 left-0 -mt-8 -ml-20 font-sans text-teal-500 opacity-50 text-7xl;
-
+    @apply top-0 left-0 md:-mt-8 md:-ml-20;
     content: '❝';
+  }
+
+  &::after {
+    @apply bottom-0 right-0 md:-mb-8 md:-mr-20;
+    content: '❞';
   }
 }
 
 .markdown a {
-  @apply underline transition-colors duration-200 text-fuchsia-700;
+  @apply text-transparent bg-clip-text bg-gradient-to-t from-cyan-600 to-cyan-600 transition-all underline duration-500;
 }
 
 .markdown a:hover {
-  @apply text-fuchsia-500;
+  @apply to-fuchsia-600;
+  text-decoration-color: theme(colors.cyan[600]);
 }

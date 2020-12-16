@@ -1,45 +1,52 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
+import {useRouter} from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
-import {useRouter} from 'next/router'
 
 import Container from '../components/container'
-import Header from '../components/site-header'
 import Layout from '../components/layout'
-import MoreDocs from '../components/more-docs'
-import ArticleBody from '../components/article-body'
-import ArticleHeader from '../components/article-header'
-import ArticleTitle from '../components/article-title'
+import SiteHeader from '../components/site-header'
+import PostHeader from '../components/post-header'
+import PostTitle from '../components/post-title'
+import PostBody from '../components/post-body'
 import SectionSeparator from '../components/section-separator'
-import {getAllDocsWithSlug, getAllDocsForHome, getPageBySlug, getPostAndMorePosts} from '../lib/api'
+import MorePosts from '../components/more-posts'
+import Comments from '../components/comments'
+import Form from '../components/form'
+import {getAllPostsWithSlug, getAllPostsForNav, getPostsAndMorePosts} from '../lib/api'
 
-const Page = ({page, morePosts, preview, allPages}) => {
+const Post = ({post, morePosts, preview, navPosts}) => {
   const router = useRouter()
-  if (!router.isFallback && (!page?.slug || !page?.title)) {
+  if (!router.isFallback && (!post?.slug || !post?.title)) {
     return <ErrorPage statusCode={404} />
   }
   return (
     <Layout preview={preview}>
       <Container>
-        <Header pages={allPages} />
+        <SiteHeader pages={navPosts} />
         {router.isFallback ? (
-          <ArticleTitle>Loading…</ArticleTitle>
+          <PostTitle>Loading…</PostTitle>
         ) : (
           <>
             <article>
               <Head>
-                <title>{page.title}</title>
+                <title>{post.title}</title>
+                {post.ogImage && <meta property="og:image" content={post.ogImage.url} />}
               </Head>
-              <ArticleHeader
-                title={page.title}
-                coverImage={page.coverImage}
-                date={page.date}
-                author={page.author}
+              <PostHeader
+                title={post.title}
+                coverImage={post.coverImage}
+                date={post.date}
+                author={post.author}
               />
-              <ArticleBody content={page.content} />
+              <PostBody content={post.content} />
             </article>
+
+            <Comments comments={post?.comments} />
+            <Form _id={post._id} />
+
             <SectionSeparator />
-            {morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
+            {morePosts?.length > 0 && <MorePosts posts={morePosts} />}
           </>
         )}
       </Container>
@@ -48,21 +55,21 @@ const Page = ({page, morePosts, preview, allPages}) => {
 }
 
 export const getStaticProps: GetStaticProps = async ({params, preview = false}) => {
-  const data = await getPageBySlug(params.slug, preview)
-  const allPages = await getAllDocsForHome('page', preview)
-  const allPosts = await getAllDocsForHome('post', preview)
+  const posts = await getPostsAndMorePosts(params.slug, preview)
+  const pages = await getAllPostsForNav(preview)
   return {
     props: {
       preview,
-      page: data || null,
-      morePosts: allPosts.slice(0, 2) || [],
-      allPages: allPages || null,
+      post: posts?.post || null,
+      morePosts: posts?.morePosts || [],
+      navPosts: pages || [],
     },
+    revalidate: 1,
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPages = await getAllDocsWithSlug('page')
+  const allPages = await getAllPostsWithSlug()
   return {
     paths:
       allPages?.map((page) => ({
@@ -74,4 +81,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export default Page
+export default Post

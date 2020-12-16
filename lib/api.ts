@@ -1,12 +1,24 @@
 import client, {previewClient} from './sanity'
 
-const getUniqueDocs = (docs) => {
+const getUniquePosts = (posts) => {
   const slugs = new Set()
-  return docs.filter((doc) => {
-    if (slugs.has(doc.slug)) {
+  return posts.filter((post) => {
+    if (slugs.has(post.slug)) {
       return false
     } else {
-      slugs.add(doc.slug)
+      slugs.add(post.slug)
+      return true
+    }
+  })
+}
+
+const getUniquePages = (posts) => {
+  const slugs = new Set()
+  return posts.filter((post) => {
+    if (slugs.has(post.slug)) {
+      return false
+    } else if (post.doc.name === 'page') {
+      slugs.add(post.slug)
       return true
     }
   })
@@ -18,17 +30,44 @@ const postFields = `
   date,
   excerpt,
   'slug': slug.current,
+  'author': author->{
+    name,
+    'avatar': avatar.asset->url
+  },
   'coverImage': coverImage.asset->url,
-  'author': author->{name, 'avatar': avatar.asset->url},
 `
+
+const pageQuery = `
+*[_type == "post"] | order(date desc, _updatedAt desc){
+	doc->{name},
+	link,
+	'slug': slug.current,
+	title
+}
+`
+
+export const getPostBySlug = async (slug: string | string[], preview: boolean) => {
+  const curClient = getClient(preview)
+  const [post] = await Promise.all([
+    curClient.fetch(
+      `
+      *[_type == 'post' && slug.current == '${slug}'] {
+        ${postFields}
+        content
+      }`,
+      {slug},
+    ),
+  ])
+  return post[0]
+}
 
 const getClient = (preview: boolean) => {
   return preview ? previewClient : client
 }
 
-export const getAllDocsWithSlug = async (docType: string) => {
+export const getAllPostsWithSlug = async () => {
   const data = await client.fetch(`
-    *[_type == '${docType}']{ 'slug': slug.current }
+    *[_type == 'post']{ 'slug': slug.current }
   `)
   return data
 }
@@ -45,25 +84,20 @@ export const getPreviewPostBySlug = async (slug: string) => {
   return data[0]
 }
 
-export const getAllPostsWithSlug = async () => {
-  const data = await client.fetch(`
-    *[_type == "post"]{
-      'slug': slug.current
-    }`)
-  console.log(typeof data)
-  return data
+export const getAllPostsForNav = async (preview: boolean) => {
+  const results = await getClient(preview).fetch(pageQuery)
+  return getUniquePages(results)
 }
 
-export const getAllDocsForHome = async (docType: string, preview: boolean) => {
-  const fieldString = docType + 'Fields'
+export const getAllPosts = async (preview: boolean) => {
   const results = await getClient(preview).fetch(`
-    *[_type == "${docType}"] | order(date desc, _updatedAt desc) {
-      ${eval(fieldString)}
+    *[_type == "post"] | order(date desc, _updatedAt desc) {
+      ${postFields}
     }`)
-  return getUniqueDocs(results)
+  return getUniquePosts(results)
 }
 
-export const getPostAndMorePosts = async (slug: string | string[], preview: boolean) => {
+export const getPostsAndMorePosts = async (slug: string | string[], preview: boolean) => {
   const curClient = getClient(preview)
   const [post, morePosts] = await Promise.all([
     curClient
@@ -72,6 +106,13 @@ export const getPostAndMorePosts = async (slug: string | string[], preview: bool
       *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) {
         ${postFields}
         content,
+        'comments': *[_type == "comment" && post._ref == ^._id && approved == true]{
+          _id,
+          name,
+          email,
+          comment,
+          _createdAt
+        }
       }`,
         {slug},
       )
@@ -85,32 +126,5 @@ export const getPostAndMorePosts = async (slug: string | string[], preview: bool
       {slug},
     ),
   ])
-  return {post, morePosts: getUniqueDocs(morePosts)}
-}
-
-const pageFields = `
-  title,
-  date,
-  excerpt,
-  'slug': slug.current,
-  'author': author->{
-    name,
-    'avatar': avatar.asset->url
-  },
-  'coverImage': coverImage.asset->url,
-`
-
-export const getPageBySlug = async (slug: string | string[], preview: boolean) => {
-  const curClient = getClient(preview)
-  const [page] = await Promise.all([
-    curClient.fetch(
-      `
-      *[_type == 'page' && slug.current == '${slug}'] {
-        ${pageFields}
-        content
-      }`,
-      {slug},
-    ),
-  ])
-  return page[0]
+  return {post, morePosts: getUniquePosts(morePosts)}
 }

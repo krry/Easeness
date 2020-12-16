@@ -5,11 +5,11 @@ import Container from '../components/container'
 import Hero from '../components/hero'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
-import MoreDocs from '../components/more-docs'
-import {getAllDocsForHome} from '../lib/api'
+import MorePosts from '../components/more-posts'
+import {getAllPosts, getAllPostsForNav} from '../lib/api'
 import {SITE_TITLE} from '../lib/constants'
 
-const Index = ({allPosts, allPages, preview}) => {
+const Index = ({allPosts, navPages, preview}) => {
   const hero = allPosts[0]
   const morePosts = allPosts.slice(1)
   return (
@@ -19,7 +19,7 @@ const Index = ({allPosts, allPages, preview}) => {
           <title>{SITE_TITLE}.</title>
         </Head>
         <Container>
-          <Intro pages={allPages} />
+          <Intro pages={navPages} />
           {hero && (
             <Hero
               title={hero.title}
@@ -30,7 +30,7 @@ const Index = ({allPosts, allPages, preview}) => {
               excerpt={hero.excerpt}
             />
           )}
-          {morePosts.length > 0 && <MoreDocs docs={morePosts} type={'post'} />}
+          {morePosts?.length > 0 && <MorePosts posts={morePosts} />}
         </Container>
       </Layout>
     </>
@@ -38,10 +38,11 @@ const Index = ({allPosts, allPages, preview}) => {
 }
 
 export const getStaticProps: GetStaticProps = async ({preview = false}) => {
-  const allPosts = await getAllDocsForHome('post', preview)
-  const allPages = await getAllDocsForHome('page', preview)
+  const allPosts = await getAllPosts(preview)
+  const navPages = await getAllPostsForNav(preview)
+
   return {
-    props: {allPosts, allPages, preview},
+    props: {navPages, allPosts, preview},
   }
 }
 

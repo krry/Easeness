@@ -1,18 +1,15 @@
 import cn from 'classnames'
-
 import Container from './container'
-import ThemeSwitch from './theme-switch'
 
 const Alert = ({preview}) => {
   return (
     <div
-      className={cn('border-b', {
-        'bg-cyan-300 border-cyan-600 text-white': preview,
-        'bg-white border-white': !preview,
+      className={cn({
+        'border-b bg-cyan-300 border-cyan-600 text-white': preview,
       })}>
       <Container>
         <div className="py-2 text-center text-md">
-          {preview ? (
+          {preview && (
             <>
               <a
                 href="/api/exit-preview"
@@ -20,8 +17,6 @@ const Alert = ({preview}) => {
                 Exit preview mode
               </a>
             </>
-          ) : (
-            <ThemeSwitch />
           )}
         </div>
       </Container>
