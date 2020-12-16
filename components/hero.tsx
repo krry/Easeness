@@ -5,6 +5,7 @@ import Avatar from './avatar'
 import CoverImage from './cover-image'
 import Date from './date'
 
+// TODO: offer a call-to-action
 const Hero = ({title, coverImage, date, excerpt, author, slug}) => {
   return (
     <section className={styles.hero}>

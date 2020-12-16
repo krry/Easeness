@@ -2,7 +2,7 @@
 .post-preview:nth-of-type(4n-2) .cover-image,
 .post-preview:nth-of-type(4n-1) .cover-image,
 .post-preview:nth-of-type(4n) .cover-image {
-  @apply overflow-hidden sm:rounded-tr-full sm:rounded-br-full sm:rounded-bl-full sm:rounded-tl-full md:rounded-none;
+  @apply overflow-hidden sm:rounded-tr-full sm:rounded-br-full sm:rounded-bl-full sm:rounded-tl-full md:rounded-lg;
 }
 
 .post-preview:nth-of-type(4n-2) .cover-image,

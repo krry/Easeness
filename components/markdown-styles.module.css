@@ -8,12 +8,16 @@
   @apply my-6 text-xl tracking-wide font-serif;
 }
 
+.markdown figure {
+  border-radius: 50rem;
+}
+
 .markdown figure:nth-of-type(2n-1) {
-  @apply rounded-tl-lg rounded-br-full overflow-hidden;
+  @apply rounded-br-full overflow-hidden;
 }
 
 .markdown figure:nth-of-type(2n) {
-  @apply rounded-tr-lg rounded-bl-full overflow-hidden;
+  @apply rounded-bl-full overflow-hidden;
 }
 
 .markdown p {
