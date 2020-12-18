@@ -27,14 +27,16 @@ const getUniquePages = (posts) => {
 const postFields = `
   name,
   title,
-  date,
-  excerpt,
+  link,
   'slug': slug.current,
   'author': author->{
     name,
     'avatar': avatar.asset->url
   },
+  excerpt,
   'coverImage': coverImage.asset->url,
+  'doc': doc->{name},
+  date,
 `
 
 const pageQuery = `

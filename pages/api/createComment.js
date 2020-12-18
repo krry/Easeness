@@ -1,13 +1,7 @@
 import {previewClient} from '../../lib/sanity'
 
-const createComment = async function (
-  req: {body: string},
-  res: {
-    status: (
-      arg0: number,
-    ) => {(): any; new (): any; json: {(arg0: {message: string; err?: any}): any; new (): any}}
-  },
-) {
+const createComment = async (req, res) => {
+  console.log('creating comment')
   // Destructure the pieces of our request
   const {_id, name, email, comment} = JSON.parse(req.body)
   try {

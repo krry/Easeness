@@ -24,7 +24,9 @@
     "postcss.config.js",
     "next.config.js",
     "lib/sanity.js",
-    "lib/sanity.js"
+    "lib/sanity.js",
+    "pages/api/createComment.js",
+    "../cms/utes/migrate.ts"
   ],
   "exclude": ["node_modules"],
   "files": ["@types/block-content-to-react.d.ts"]

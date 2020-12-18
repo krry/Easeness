@@ -2,9 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .dark .moonface {
+    box-shadow: 0 0 50rem 2rem #ffffbd;
+  }
+
+  .dark *:not(button span) {
+    background-color: inherit;
+  }
+
+  body {
+    @apply text-gray-900 dark:text-gray-500 dark:bg-black;
+  }
+}
+
 @layer components {
   .btn {
-    @apply py-4 text-2xl font-bold text-gray-100 rounded-lg shadow focus:ring focus:outline-none bg-gradient-to-br to-fuchsia-500 from-cyan-500 hover:bg-cyan-400;
+    @apply py-4 text-2xl font-bold text-gray-100 rounded-lg shadow focus:ring focus:outline-none bg-gradient-to-br to-fuch-500 from-cyan-500 hover:bg-cyan-400;
   }
 
   .btn.wide {
@@ -16,36 +30,19 @@
   }
 
   .pretty-heading {
-    @apply font-bold leading-tight tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-fuchsia-600 dark:from-cyan-500 dark:to-fuchsia-500;
+    @apply font-bold leading-tight tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-fuch-600 dark:from-cyan-500 dark:to-fuch-500;
+  }
+
+  .prettier-heading {
+    @apply font-extrabold leading-tight tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-cyan-500 to-fuch-600;
   }
 
   .pretty-link {
-    @apply transition-all duration-500 text-transparent bg-clip-text bg-gradient-to-t from-cyan-600 to-cyan-600 dark:from-cyan-500 dark:to-cyan-500;
+    @apply transition-all duration-500 text-transparent bg-clip-text bg-gradient-to-b from-cyan-600 to-cyan-600 dark:from-cyan-500 dark:to-cyan-500 p-px;
 
     &:hover {
-      @apply underline to-fuchsia-600 dark:to-fuchsia-600;
+      @apply underline from-purp-600 dark:from-fuch-600;
       text-decoration-color: theme(colors.cyan[600]);
     }
   }
-}
-
-html,
-.moonface {
-  transition: filter 500ms;
-}
-
-.dark {
-  @apply bg-black text-gray-100;
-}
-
-.dark .moonface {
-  box-shadow: 0 0 50rem 2rem #ffffbd;
-}
-
-.mode-btn.active {
-  opacity: 1 !important;
-}
-
-* {
-  background-color: inherit;
 }

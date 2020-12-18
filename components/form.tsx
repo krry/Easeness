@@ -6,17 +6,19 @@ export default function Form({_id}) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const {register, handleSubmit, watch, errors} = useForm()
+
   const onSubmit = async (data: (prevState: undefined) => undefined) => {
+    const requestHeaders: HeadersInit = new Headers()
+    requestHeaders.set('Content-Type', 'application/json')
+
     setIsSubmitting(true)
-    let response: Response
     setFormData(data)
-    const options: RequestInit = {
-      method: 'POST',
-      body: JSON.stringify(data),
-      // type: 'application/json',
-    }
     try {
-      response = await fetch('/api/createComment', options)
+      await fetch('/api/createComment', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: requestHeaders,
+      })
       setIsSubmitting(false)
       setHasSubmitted(true)
     } catch (err) {
@@ -44,7 +46,7 @@ export default function Form({_id}) {
       </section>
     )
   }
-
+  // TODO: enable autocomplete of the name and email fields
   return (
     <section className="max-w-full mx-auto md:max-w-2xl lg:max-w-4xl">
       <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg mx-auto">

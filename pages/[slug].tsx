@@ -9,7 +9,7 @@ import SiteHeader from '../components/site-header'
 import PostHeader from '../components/post-header'
 import PostTitle from '../components/post-title'
 import PostBody from '../components/post-body'
-import SectionSeparator from '../components/section-separator'
+import Dinkus from '../components/dinkus'
 import MorePosts from '../components/more-posts'
 import Comments from '../components/comments'
 import Form from '../components/form'
@@ -42,10 +42,14 @@ const Post = ({post, morePosts, preview, navPosts}) => {
               <PostBody content={post.content} />
             </article>
 
-            <Comments comments={post?.comments} />
-            <Form _id={post._id} />
+            {post.doc.name === 'post' && (
+              <section>
+                <Comments comments={post?.comments} />
+                <Form _id={post._id} />
+              </section>
+            )}
 
-            <SectionSeparator />
+            <Dinkus text="⁂" />
             {morePosts?.length > 0 && <MorePosts posts={morePosts} />}
           </>
         )}

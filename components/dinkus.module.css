@@ -1,0 +1,15 @@
+.dinkus {
+  @apply leading-none relative outline-none border-0 text-center h-6 opacity-75;
+
+  &::before {
+    content: '';
+
+    @apply bg-gradient-to-r from-transparent via-purp-700 dark:via-purp-200 to-transparent absolute left-0 top-1/2 w-full h-px;
+  }
+
+  &::after {
+    content: attr(data-content);
+
+    @apply relative inline-block px-4 leading-none text-3xl text-purp-700 dark:text-purp-200 bg-white dark:bg-transparent;
+  }
+}

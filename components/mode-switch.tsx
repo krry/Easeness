@@ -42,7 +42,7 @@ const ModeSwitch = () => {
         className={cn(`moonface ${modeBtnCns}`)}
         aria-pressed={mode === 'dark'}
         onClick={flipMode}>
-        <span>{mode === 'dark' ? '🌝' : '🌚'}</span>
+        <span>{mode === 'light' ? '🌚' : '🌝'}</span>
         <span aria-hidden="true" hidden>{`${mode} mode`}</span>
       </button>
       {/* <button

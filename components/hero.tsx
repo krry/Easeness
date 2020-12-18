@@ -15,7 +15,7 @@ const Hero = ({title, coverImage, date, excerpt, author, slug}) => {
       <div className="mb-20 md:grid md:grid-cols-2 md:gap-y-16 lg:gap-y-8 md:mb-28">
         <div>
           <h3 className="mb-4 text-4xl font-bold leading-tight tracking-tight lg:text-6xl">
-            <Link as={`/${slug}`} href="/[slug]">
+            <Link href={`/${slug}`}>
               <a className="pretty-link">{title}</a>
             </Link>
           </h3>
@@ -25,7 +25,6 @@ const Hero = ({title, coverImage, date, excerpt, author, slug}) => {
         </div>
         <div>
           <p className="mb-4 text-lg leading-relaxed tracking-wide">{excerpt}</p>
-          <Avatar name={author.name} picture={author.avatar} />
         </div>
       </div>
     </section>

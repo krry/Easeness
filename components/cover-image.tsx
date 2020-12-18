@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import Link from 'next/link'
+import Image from 'next/image'
 
 import {imageBuilder} from '../lib/sanity'
 
@@ -13,7 +14,7 @@ type CIProps = {
 const CoverImage = (props: CIProps) => {
   const {title, url, slug, classes} = props
   const image = (
-    <img
+    <Image
       width={2000}
       height={1000}
       alt={`Cover for ${title}`}
@@ -26,7 +27,7 @@ const CoverImage = (props: CIProps) => {
   return (
     <div className={`-mx-5 sm:mx-0 ${classes}`}>
       {slug ? (
-        <Link as={`/${slug}`} href={'/[slug]'}>
+        <Link href={`/${slug}`}>
           <a aria-label={title}>{image}</a>
         </Link>
       ) : (
