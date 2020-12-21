@@ -2,8 +2,8 @@ module.exports = {
   plugins:
     process.env.NODE_ENV === 'production'
       ? {
-          'postcss-advanced-variables': {},
           tailwindcss: {},
+          'postcss-advanced-variables': {},
           'postcss-preset-env': {
             autoprefixer: {
               flexbox: 'no-2009',
@@ -15,8 +15,8 @@ module.exports = {
           },
         }
       : {
-          'postcss-advanced-variables': {},
           tailwindcss: {},
+          'postcss-advanced-variables': {},
           'postcss-preset-env': {
             stage: 1,
             features: {
