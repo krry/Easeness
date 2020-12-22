@@ -60,8 +60,14 @@
   @apply list-decimal;
 }
 
+.markdown blockquote + h2,
+.markdown blockquote + h3,
+.markdown blockquote + h4 {
+  @apply my-20;
+}
+
 .markdown blockquote {
-  @apply relative md:mx-20 md:my-12 font-serif text-xl italic leading-relaxed;
+  @apply relative mx-12 my-20 md:mx-20 md:my-12 font-serif text-xl italic leading-relaxed;
 
   &::before,
   &::after {
@@ -70,12 +76,12 @@
   }
 
   &::before {
-    @apply top-0 left-0 md:-mt-8 md:-ml-20 pt-2 pl-2;
+    @apply top-0 left-0 -mt-16 -ml-12 md:-mt-8 md:-ml-20 pt-2 pl-2;
     content: '❝';
   }
 
   &::after {
-    @apply bottom-0 right-0 md:-mb-8 md:-mr-20 pr-2 pb-2;
+    @apply bottom-0 right-0 -mb-12 -mr-8 md:-mb-8 md:-mr-20 pr-2 pb-2;
     content: '❞';
   }
 }
