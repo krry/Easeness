@@ -1,19 +1,19 @@
 import {GetStaticPaths, GetStaticProps} from 'next'
-import {useRouter} from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
+import {useRouter} from 'next/router'
 
+import Comments from '../components/comments'
 import Container from '../components/container'
+import Dinkus from '../components/dinkus'
+import Form from '../components/form'
 import Layout from '../components/layout'
-import SiteHeader from '../components/site-header'
+import MorePosts from '../components/more-posts'
+import PostBody from '../components/post-body'
 import PostHeader from '../components/post-header'
 import PostTitle from '../components/post-title'
-import PostBody from '../components/post-body'
-import Dinkus from '../components/dinkus'
-import MorePosts from '../components/more-posts'
-import Comments from '../components/comments'
-import Form from '../components/form'
-import {getAllPostsWithSlug, getAllPostsForNav, getPostsAndMorePosts} from '../lib/api'
+import SiteHeader from '../components/site-header'
+import {getAllPostsForNav, getAllPostsWithSlug, getPostAndMorePosts} from '../lib/api'
 
 const Post = ({post, morePosts, preview, navPosts}) => {
   const router = useRouter()
@@ -59,7 +59,7 @@ const Post = ({post, morePosts, preview, navPosts}) => {
 }
 
 export const getStaticProps: GetStaticProps = async ({params, preview = false}) => {
-  const posts = await getPostsAndMorePosts(params.slug, preview)
+  const posts = await getPostAndMorePosts(params.slug, preview)
   const pages = await getAllPostsForNav(preview)
   return {
     props: {

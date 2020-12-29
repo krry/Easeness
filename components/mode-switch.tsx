@@ -45,7 +45,7 @@ const ModeSwitch = () => {
     <Fragment>
       <button
         type="button"
-        className="sticky m-3 text-4xl rounded-full outline-none bg-none focus:outline-none hover:opacity-100 top-2 right-2 moonface dark:moonshine shimmer"
+        className="sticky m-3 text-4xl rounded-full outline-none bg-none focus:outline-none hover:opacity-100 top-2 right-2 moonface dark:moonshine dark:shimmer"
         aria-pressed={darkMode ? 'true' : 'false'}
         onClick={flipMode}>
         <span>{darkMode ? '🌝' : '🌚'}</span>

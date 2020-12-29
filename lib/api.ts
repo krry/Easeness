@@ -1,6 +1,6 @@
 import client, {previewClient} from './sanity'
 
-const getUniquePosts = (posts) => {
+const getUniquePosts = (posts: any[]) => {
   const slugs = new Set()
   return posts.filter((post) => {
     if (slugs.has(post.slug)) {
@@ -12,7 +12,7 @@ const getUniquePosts = (posts) => {
   })
 }
 
-const getUniquePages = (posts) => {
+const getUniquePages = (posts: any[]) => {
   const slugs = new Set()
   return posts.filter((post) => {
     if (slugs.has(post.slug)) {
@@ -48,6 +48,18 @@ const pageQuery = `
 }
 `
 
+const bodyWithLinkSlugs = `
+  content[]{
+    ...,
+    markDefs[]{
+      ...,
+      _type == "internalink" => {
+        "slug": @.reference->slug
+      }
+    }
+  },
+`
+
 export const getPostBySlug = async (slug: string | string[], preview: boolean) => {
   const curClient = getClient(preview)
   const [post] = await Promise.all([
@@ -55,7 +67,7 @@ export const getPostBySlug = async (slug: string | string[], preview: boolean) =
       `
       *[_type == 'post' && slug.current == '${slug}'] {
         ${postFields}
-        content
+        ${bodyWithLinkSlugs}
       }`,
       {slug},
     ),
@@ -79,7 +91,7 @@ export const getPreviewPostBySlug = async (slug: string) => {
     `
     *[_type == "post" && slug.current == $slug] | order(date desc){
       ${postFields}
-      content
+      ${bodyWithLinkSlugs}
     }`,
     {slug},
   )
@@ -99,7 +111,7 @@ export const getAllPosts = async (preview: boolean) => {
   return getUniquePosts(results)
 }
 
-export const getPostsAndMorePosts = async (slug: string | string[], preview: boolean) => {
+export const getPostAndMorePosts = async (slug: string | string[], preview: boolean) => {
   const curClient = getClient(preview)
   const [post, morePosts] = await Promise.all([
     curClient
@@ -107,7 +119,7 @@ export const getPostsAndMorePosts = async (slug: string | string[], preview: boo
         `
       *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) {
         ${postFields}
-        content,
+        ${bodyWithLinkSlugs}
         'comments': *[_type == "comment" && post._ref == ^._id && approved == true]{
           _id,
           name,
