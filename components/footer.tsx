@@ -5,7 +5,7 @@ import Container from './container'
 
 const Footer = () => {
   return (
-    <footer className="border-t bg-screen border-cyan-200 dark:bg-shadow dark:border-indigo-800 h-half">
+    <footer className="border-t bg-screen border-cyan-200 dark:bg-shadow dark:border-indigo-800">
       <Container>
         <div className="flex flex-col items-center py-28 lg:flex-row">
           <h3 className="mb-10 text-4xl font-bold leading-tight tracking-tighter text-center transition-colors duration-200 lg:text-5xl lg:text-left lg:mb-0 lg:pr-4 lg:w-1/2">
