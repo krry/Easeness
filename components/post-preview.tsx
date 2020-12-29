@@ -17,7 +17,7 @@ const PostPreview = ({title, coverImage, date, excerpt, slug}) => {
       <div className="mb-4 text-sm tracking-tight text-gray-700 transition-opacity duration-200 dark:text-gray-600">
         <Date dateString={date} />
       </div>
-      <p className="mb-4 text-lg leading-relaxed tracking-wide">{excerpt}</p>
+      <p className="mb-4 font-serif text-lg leading-relaxed tracking-wide">{excerpt}</p>
     </div>
   )
 }

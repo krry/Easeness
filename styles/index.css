@@ -145,7 +145,7 @@
   }
 
   .markdown blockquote::before {
-    @apply block top-0 right-0 md:-mt-10 md:-mr-10 lg:-mt-10 lg:-mr-12 pt-2 pr-2;
+    @apply block top-0 right-0 md:left-0 md:right-auto md:-mt-10 md:-ml-10 lg:-mt-10 lg:-ml-12 pt-2 pr-2 md:pl-2;
     content: '❝';
   }
 
@@ -186,10 +186,6 @@
     content: attr(data-content);
 
     @apply relative inline-block text-black dark:text-white py-2 leading-6 text-purp-700 dark:via-gold-200 bg-cyan-100 dark:bg-flame-900;
-  }
-
-  .post-preview p {
-    @apply font-serif;
   }
 
   .post-preview:nth-of-type(4n-3) .cover-image,

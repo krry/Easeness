@@ -22,7 +22,7 @@ const Hero = ({title, coverImage, date, excerpt, slug}) => {
           </div>
         </div>
         <div>
-          <p className="mb-4 text-lg leading-relaxed tracking-wide">{excerpt}</p>
+          <p className="mb-4 text-lg leading-relaxed tracking-wide font-serif">{excerpt}</p>
         </div>
       </div>
     </section>
