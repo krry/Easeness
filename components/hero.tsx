@@ -1,16 +1,14 @@
 import Link from 'next/link'
-import styles from './hero.module.css'
 
-import Avatar from './avatar'
 import CoverImage from './cover-image'
 import Date from './date'
 
 // TODO: offer a call-to-action
-const Hero = ({title, coverImage, date, excerpt, author, slug}) => {
+const Hero = ({title, coverImage, date, excerpt, slug}) => {
   return (
-    <section className={styles.hero}>
+    <section className="hero">
       <div className="mb-8 md:mb-16">
-        <CoverImage slug={slug} title={title} url={coverImage} classes={styles['cover-image']} />
+        <CoverImage slug={slug} title={title} url={coverImage} classes="cover-image no-ib" />
       </div>
       <div className="mb-20 md:grid md:grid-cols-2 md:gap-y-16 lg:gap-y-8 md:mb-28">
         <div>

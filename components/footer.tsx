@@ -5,10 +5,10 @@ import Container from './container'
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 border-t border-gray-200 dark:bg-black dark:border-gray-900">
+    <footer className="border-t bg-screen border-cyan-200 dark:bg-shadow dark:border-indigo-800 h-half">
       <Container>
         <div className="flex flex-col items-center py-28 lg:flex-row">
-          <h3 className="mb-10 text-4xl font-bold leading-tight tracking-tighter text-center transition-colors duration-200 lg:text-5xl lg:text-left lg:mb-0 lg:pr-4 lg:w-1/2 hover:text-lime-600">
+          <h3 className="mb-10 text-4xl font-bold leading-tight tracking-tighter text-center transition-colors duration-200 lg:text-5xl lg:text-left lg:mb-0 lg:pr-4 lg:w-1/2">
             <Link href="/">
               <a className="pretty-link">{SITE_TITLE}</a>
             </Link>

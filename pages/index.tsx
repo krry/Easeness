@@ -25,7 +25,6 @@ const Index = ({allPosts, navPages, preview}) => {
               title={hero.title}
               coverImage={hero.coverImage}
               date={hero.date}
-              author={hero.author}
               slug={hero.slug}
               excerpt={hero.excerpt}
             />

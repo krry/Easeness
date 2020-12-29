@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import BlockContent from '@sanity/block-content-to-react'
-import styles from './markdown.module.css'
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 
 const serializers = {
@@ -10,7 +9,7 @@ const serializers = {
         return null
       }
       return (
-        <figure className={styles.postImage}>
+        <figure>
           <Image src={node.slug} alt={node.caption} width={2000} height={1000} />
           <figcaption>
             <em>{node.caption}</em>
@@ -27,7 +26,7 @@ const serializers = {
 
       console.log('dinkus node', node)
 
-      return <hr className={styles.dinkus} data-content={node.children} />
+      return <hr data-content={node.children} />
     },
   },
   marks: {
@@ -37,7 +36,19 @@ const serializers = {
       }
       console.log('highlight node', node)
 
-      return <span className={styles.highlitText}>{node}</span>
+      return <span className="hilit">{node}</span>
+    },
+    internalink: ({node}) => {
+      if (!node || !node.asset || !node.asset._ref) {
+        return null
+      }
+      console.log('highlight node', node)
+
+      return (
+        <a className="internalink" href={node.reference.link}>
+          {node.text}
+        </a>
+      )
     },
   },
 }
@@ -50,7 +61,7 @@ const PostBody = ({content}) => {
         dataset="production"
         projectId={projectId}
         serializers={serializers}
-        className={styles.markdown}
+        className="text-base leading-relaxed markdown sm:text-lg md:text-xl"
       />
     </div>
   )

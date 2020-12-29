@@ -49,7 +49,7 @@ const Post = ({post, morePosts, preview, navPosts}) => {
               </section>
             )}
 
-            <Dinkus text="⁂" />
+            <Dinkus text="⚜︎" />
             {morePosts?.length > 0 && <MorePosts posts={morePosts} />}
           </>
         )}

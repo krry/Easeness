@@ -1,58 +1,58 @@
-import cn from 'classnames'
 import React, {Fragment, useEffect, useState} from 'react'
 
-const checkMode = () => {
-  let modePref: string
-  if (typeof window !== 'undefined') {
-    const storedMode = localStorage.getItem('mode')
-    // On page load or when changing modes, best to add inline in `head` to avoid FOUC
-    if (storedMode === 'dark' || matchMedia('(prefers-color-scheme: dark)').matches) {
-      modePref = 'dark'
-    } else if (storedMode === 'light' || matchMedia('(prefers-color-scheme: light)').matches) {
-      modePref = 'light'
-    } else {
-      modePref = 'light'
-    }
-  } else modePref = 'light'
-  return modePref
+let fresh = true
+
+const checkDarkMode = () => {
+  const userPrefDark = matchMedia && matchMedia('(prefers-color-scheme: dark)').matches
+  const storedPrefDark = window.localStorage && localStorage.getItem('mode') === 'dark'
+  return userPrefDark || storedPrefDark
+}
+
+const watchDarkMode = () => {
+  if (!window.matchMedia) return
+  const darkMediaQuery = matchMedia('(prefers-color-scheme: dark)')
+  darkMediaQuery.addEventListener('change', applyDarkMode)
+}
+
+const applyDarkMode = (_, darkMode?: boolean) => {
+  const prevDark = checkDarkMode && fresh
+  if (prevDark || darkMode) {
+    window.localStorage.setItem('mode', 'dark')
+    document.documentElement.classList.add('mode-dark')
+  } else {
+    window.localStorage.setItem('mode', 'light')
+    document.documentElement.classList.remove('mode-dark')
+  }
 }
 
 const ModeSwitch = () => {
-  const modes = ['light', 'dark']
-  const [mode, setMode] = useState(checkMode())
+  const [darkMode, setDarkMode] = useState(false)
+  const flipMode = () => {
+    fresh = false
+    setDarkMode(!darkMode)
+  }
 
   useEffect(() => {
-    modes.map((m) => {
-      document.documentElement.classList.remove(m)
-    })
+    setDarkMode(checkDarkMode())
+    watchDarkMode()
+  }, [])
 
-    document.documentElement.classList.add(mode)
-    localStorage.setItem('mode', mode)
-  }, [mode])
+  useEffect(() => {
+    applyDarkMode(null, darkMode)
+  }, [darkMode])
 
-  const flipMode = () => {
-    setMode(mode === 'light' ? 'dark' : 'light')
-  }
-  const modeBtnCns =
-    'opacity-75 hover:opacity-100 transition-opacity duration-500 rounded-full text-4xl m-3 sticky top-2 outline-none'
   return (
     <Fragment>
       <button
         type="button"
-        className={cn(`moonface ${modeBtnCns}`)}
-        aria-pressed={mode === 'dark'}
+        className="sticky m-3 text-4xl transition-opacity duration-500 rounded-full outline-none opacity-75 focus:outline-none hover:opacity-100 top-2 right-2 moonface dark:moonshine shimmer"
+        aria-pressed={darkMode ? 'true' : 'false'}
         onClick={flipMode}>
-        <span>{mode === 'light' ? '🌚' : '🌝'}</span>
-        <span aria-hidden="true" hidden>{`${mode} mode`}</span>
+        <span>{darkMode ? '🌝' : '🌚'}</span>
+        <span aria-hidden="true" hidden>
+          {darkMode ? 'dark mode' : 'light mode'}
+        </span>
       </button>
-      {/* <button
-        type="button"
-        className={cn(`moonface ${modeBtnCns}`, { 'active': mode === 'light'})}
-        aria-pressed={mode === 'dark'}
-        onClick={flipMode}>
-        <span>{'🌚'}</span>
-        <span aria-hidden="true" hidden>{`${mode} mode`}</span>
-      </button> */}
     </Fragment>
   )
 }

@@ -6,9 +6,11 @@ module.exports = {
   theme: {
     colors: {
       inherit: 'inherit',
+      transparent: 'transparent',
+      screen: 'hsla(172, 50%, 96%, 0.5)',
+      shadow: 'hsla(233, 50%, 4%, 0.5)',
       black: '#05090a',
       white: '#fff',
-      transparent: 'transparent',
       gray: {
         100: '#fefeff',
         200: '#fbfbff',
@@ -75,6 +77,17 @@ module.exports = {
         800: '#635125',
         900: '#322813',
       },
+      flame: {
+        100: '#fbdbd0',
+        200: '#f7b6a1',
+        300: '#f49271',
+        400: '#f06d42',
+        500: '#ec4913',
+        600: '#bd3a0f',
+        700: '#8e2c0b',
+        800: '#5e1d08',
+        900: '#2f0f04',
+      },
       fuch: {
         100: '#ffd9f7',
         200: '#ffb2ee',
@@ -93,7 +106,10 @@ module.exports = {
         28: '7rem',
       },
       lineHeight: {
-        tight: 1.2,
+        tight: 1.25,
+      },
+      height: {
+        half: '50vh',
       },
       fontSize: {
         '5xl': '2.5rem',
@@ -105,9 +121,35 @@ module.exports = {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
       },
+      keyframes: {
+        burn: {
+          '0%, 100%': {color: (theme) => theme.colors.gold[500]},
+          '50%': {color: (theme) => theme.colors.flame[500]},
+        },
+        glam: {
+          '0%, 100%': {color: (theme) => theme.colors.cyan[600]},
+          '50%': {color: (theme) => theme.colors.fuch[600]},
+        },
+        rainbowheel: {
+          '0%': {'background-position': '0% 50%'},
+          '50%': {'background-position': '100% 50%'},
+          '100%': {'background-position': '0% 50%'},
+        },
+        shimmer: {
+          '0%': {'box-shadow': '0 0 50rem 2rem hsl(56, 85%, 87%)'},
+          '50%': {'box-shadow': '0 0 40rem 3rem hsl(64, 95%, 95%)'},
+          '100%': {'box-shadow': '0 0 50rem 2rem hsl(56, 85%, 87%)'},
+        },
+      },
+      animation: {
+        burn: 'burn 1.5s ease-in-out infinite',
+        glam: 'glam 1.5s ease-in-out infinite',
+        rainbowheel: 'rainbowheel 30s infinite',
+        shimmer: 'shimmer 15s ease infinite',
+      },
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [require('tailwindcss-dark-mode')()],
   purge: ['./pages/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
 }

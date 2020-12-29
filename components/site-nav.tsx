@@ -8,7 +8,7 @@ const SiteNav = ({pages, classes}) => {
           {pages.map((page) => (
             <li key={page.slug} className="inline-block px-2 font-semibold md:mx-2 ">
               <Link href={`/${page.slug}`}>
-                <a className="pretty-link">{page.link}</a>
+                <a className="pretty-link retro">{page.link}</a>
               </Link>
             </li>
           ))}
