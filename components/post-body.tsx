@@ -11,7 +11,7 @@ const PostBody = ({content}) => {
     types: {
       block: (props) => {
         const style = props.node.style || 'normal'
-        console.log('block', props)
+        // console.log('block', props)
         if (/^h\d/.test(style)) {
           const level = style.replace(/[^\d]/g, '')
           return React.createElement(
@@ -57,11 +57,11 @@ const PostBody = ({content}) => {
       linebreak: (props) => {
         const {style} = props.node
         if (style === 'lineBreak') {
-          console.log('line break', props.node)
+          // console.log('line break', props.node)
           return <hr className="lineBreak" />
         }
         if (readMore && style === 'readMore') {
-          console.log('readmore node', props.node)
+          // console.log('readmore node', props.node)
           return (
             <div className="readMore">
               <button onClick={() => setReadMore(false)}>Read More</button>
@@ -72,39 +72,38 @@ const PostBody = ({content}) => {
       },
     },
     marks: {
-      strong: ({mark, children}) => {
-        console.log('strong', mark)
-        return <strong className="post-strong">{children}</strong>
+      strong: (props) => {
+        return <strong className="post-strong">{props.children}</strong>
       },
-      em: ({mark, children}) => {
-        console.log('em', mark)
-        return <em className="post-em">{children}</em>
+      em: (props) => {
+        return <em className="post-em">{props.children}</em>
       },
-      code: ({mark, children}) => {
-        console.log('code', mark)
-        return <code className="post-code">{children}</code>
+      code: (props) => {
+        // console.log('code', props.mark)
+        return <code className="post-code">{props.children}</code>
       },
-      highlight: ({mark, children}) => {
-        console.log('hilit text', mark)
-        return <span className="post-hilit hilit">{children}</span>
+      highlight: (props) => {
+        return <span className="post-hilit hilit">{props.children}</span>
       },
-      link: ({mark, children}) => {
+      link: (props) => {
         // Read https://css-tricks.com/use-target_blank/
-        const {blank, href} = mark
+        const {blank, href} = props.mark
+        // console.log('external link', props.mark, 'with target blank', blank)
         return blank ? (
           <a className="post-link link-away" href={href} target="_blank" rel="noopener noreferrer">
-            {children}
+            {props.children}
           </a>
         ) : (
           <a className="post-link" href={href}>
-            {children}
+            {props.children}
           </a>
         )
       },
-      internalink: ({mark, children}) => {
-        const {slug = {}} = mark
+      internalink: (props) => {
+        const {slug = {}} = props.mark
         const href = `/${slug.current}`
-        return <a href={href}>{children}</a>
+        // console.log('internal link to', props.mark)
+        return <a href={href}>{props.children}</a>
       },
     },
   }

@@ -38,7 +38,7 @@ export default function Form({_id}) {
         <p className="mb-4">Here is what we received:</p>
         <p className="mb-4">
           {' '}
-          <blockquote className="pl-4 ml-4 font-serif italic border-l-2 border-purple-200">
+          <blockquote className="pl-4 ml-4 italic border-l-2 border-purple-200">
             {formData.comment}
           </blockquote>{' '}
         </p>

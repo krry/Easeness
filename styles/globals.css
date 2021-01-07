@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply bg-indigo-100 dark:bg-indigo-900;
+  }
+
   body {
     @apply text-gray-900 transition-colors duration-700 bg-gradient-to-tr from-indigo-100 to-cyan-100 rainbow-wheel dark:text-gray-100 dark:from-indigo-900 dark:to-purp-900;
   }
@@ -13,33 +17,23 @@
   h4,
   h5,
   h6 {
-    line-height: 1.25 !important;
+    @apply font-sans leading-tight;
   }
 }
 
 @layer components {
   .dinkus {
-    @apply relative h-6 mt-32 mb-24 leading-none text-center border-0 rounded-full outline-none opacity-75 overflow-visible;
-  }
-
-  .dinkus::before {
-    content: '';
-
-    @apply bg-gradient-to-r from-transparent via-screen dark:via-shadow to-transparent absolute left-0 top-1/2 w-full h-px;
+    @apply relative h-6 mt-32 mb-24 leading-none text-center border-0 overflow-visible;
   }
 
   .dinkus::after {
     content: attr(data-content);
 
-    @apply relative inline-block text-5xl text-cyan-900 dark:text-flame-100 p-4 border border-screen dark:border-shadow bg-gradient-to-tr from-gold-100 via-cyan-200 to-purp-100 rainbow-wheel trio dark:text-gray-100 dark:from-fuch-900 dark:via-purp-900 dark:to-indigo-900;
-
-    margin-top: -0.625em;
-    border-radius: 100%;
-    line-height: 1.375;
+    @apply relative inline-block text-5xl md:text-6xl lg:text-7xl text-cyan-900 dark:text-flame-100 p-4;
   }
 
   .btn {
-    @apply py-4 text-2xl font-bold text-gray-100 rounded-lg shadow focus:ring focus:outline-none transition-colors duration-500 bg-gradient-to-br to-fuch-500 from-cyan-500 hover:bg-cyan-400 dark:from-cyan-400 dark:to-gold-400 hover:bg-cyan-400;
+    @apply py-4 text-2xl font-bold text-gray-100 rounded-lg shadow focus:ring focus:outline-none transition-all duration-500 bg-gradient-to-br to-purp-600 from-fuch-600 hover:from-indigo-500 dark:to-lime-500 dark:from-indigo-500 dark:hover:from-gold-500 font-sans;
   }
 
   .btn.wide {
@@ -47,7 +41,7 @@
   }
 
   .field .input {
-    @apply block w-full px-3 py-2 mt-1 border-2 border-gray-400 rounded shadow hover:border-gray-500 focus:border-cyan-500 focus:outline-none;
+    @apply block w-full px-3 py-2 mt-1 border-2 border-gray-400 rounded shadow hover:border-gray-500 focus:border-cyan-500 focus:outline-none font-serif;
   }
 
   .post-preview:nth-of-type(4n-3) .cover-image,
@@ -105,19 +99,11 @@
   }
 
   .moonface {
-    z-index: 5;
+    @apply dark:shadow-moon z-10 transform-gpu;
     transform: rotateY(180deg);
   }
 
   .cover-image.no-ib div {
     display: block !important;
-  }
-}
-
-@layer utilities {
-  @variants dark {
-    .moonshine {
-      box-shadow: 0 0 50rem 2rem hsl(56, 85%, 87%);
-    }
   }
 }

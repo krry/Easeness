@@ -18,10 +18,10 @@ const applyDarkMode = (_, darkMode?: boolean) => {
   const prevDark = checkDarkMode && fresh
   if (prevDark || darkMode) {
     window.localStorage.setItem('mode', 'dark')
-    document.documentElement.classList.add('mode-dark')
+    document.documentElement.classList.add('dark')
   } else {
     window.localStorage.setItem('mode', 'light')
-    document.documentElement.classList.remove('mode-dark')
+    document.documentElement.classList.remove('dark')
   }
 }
 
@@ -45,7 +45,7 @@ const ModeSwitch = () => {
     <Fragment>
       <button
         type="button"
-        className="sticky m-3 text-4xl rounded-full outline-none bg-none focus:outline-none hover:opacity-100 top-2 right-2 moonface dark:moonshine dark:shimmer"
+        className="sticky m-3 text-4xl rounded-full outline-none md:text-5xl lg:text-6xl bg-none focus:outline-none hover:opacity-100 top-2 right-2 md:top-3 md:right-3 lg:top-4 lg:right-4 moonface dark:moonshine dark:shimmer"
         aria-pressed={darkMode ? 'true' : 'false'}
         onClick={flipMode}>
         <span>{darkMode ? '🌝' : '🌚'}</span>

@@ -4,54 +4,49 @@
 
 @layer components {
   .pretty-heading {
-    @apply font-bold leading-tight tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-fuch-600 dark:from-gold-400 dark:to-flame-400;
+    @apply font-bold leading-tight tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-700 to-fuch-700 dark:from-gold-300 dark:to-flame-300;
   }
 
   .prettier-heading {
-    @apply font-extrabold leading-tight tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-cyan-500 to-fuch-600 dark:from-gold-400 dark:to-flame-400;
+    @apply font-extrabold leading-tight tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-cyan-700 to-fuch-700 dark:from-gold-300 dark:to-flame-300;
   }
 
   .pretty-link {
-    @apply transition-all duration-500 text-transparent bg-clip-text bg-gradient-to-b from-cyan-600 to-cyan-600 dark:from-gold-400 dark:to-gold-400 p-px;
+    @apply transition-all duration-500 text-transparent bg-clip-text bg-gradient-to-b from-cyan-700 to-cyan-700 dark:from-gold-300 dark:to-gold-300 p-px hover:underline font-sans hover:from-fuch-700 dark:hover:from-flame-300;
   }
 
   .pretty-link.retro {
-    @apply from-fuch-600 to-fuch-600 dark:from-flame-400 dark:to-flame-400;
+    @apply from-fuch-700 to-fuch-700 dark:from-flame-300 dark:to-flame-300 hover:to-cyan-700 dark:hover:to-gold-300;
   }
 
   .pretty-link:hover {
-    @apply underline from-fuch-600 dark:from-flame-400;
-    text-decoration-color: theme(colors.cyan[600]);
+    text-decoration-color: theme(colors.cyan[700]);
   }
 
-  .pretty-link.retro:hover {
-    @apply to-cyan-600 dark:to-gold-400;
-  }
-
-  .mode-dark .pretty-link:hover {
-    text-decoration-color: theme(colors.gold[500]);
+  .theme-dark .pretty-link:hover {
+    text-decoration-color: theme(colors.gold[300]);
   }
 
   .markdown p,
   .markdown ul,
   .markdown ol {
-    @apply my-6 tracking-wide font-serif;
+    @apply my-6 tracking-wide;
   }
 
   .markdown figure {
-    border-radius: 50rem;
+    @apply overflow-hidden rounded-50;
   }
 
   .markdown figure:nth-of-type(2n-1) {
-    @apply rounded-br-full overflow-hidden;
+    @apply rounded-br-full;
   }
 
   .markdown figure:nth-of-type(2n) {
-    @apply rounded-bl-full overflow-hidden;
+    @apply rounded-bl-full;
   }
 
   .markdown p {
-    @apply mb-6 leading-snug;
+    @apply mb-6 leading-snug font-serif;
     opacity: 0.92;
   }
 
@@ -61,22 +56,22 @@
 
   .markdown h2 {
     @apply mt-12 mb-4 text-3xl md:text-4xl lg:text-5xl pretty-heading;
-    @apply from-cyan-600 to-fuch-600 dark:from-gold-500 dark:to-flame-500;
+    @apply from-cyan-700 to-fuch-700 dark:from-gold-300 dark:to-flame-300;
   }
 
   .markdown h3 {
     @apply mt-8 mb-4 text-2xl md:text-3xl lg:text-4xl pretty-heading;
-    @apply from-indigo-600 to-cyan-600 dark:to-cyan-500 dark:from-gold-500;
+    @apply from-indigo-700 to-cyan-700 dark:to-cyan-300 dark:from-gold-300;
   }
 
   .markdown h4 {
     @apply text-xl md:text-2xl lg:text-3xl pretty-heading;
-    @apply from-lime-600 to-indigo-600 dark:to-lime-500 dark:from-flame-500;
+    @apply from-lime-700 to-indigo-700 dark:to-lime-300 dark:from-flame-300;
   }
 
   .markdown ul,
   .markdown ol {
-    @apply ml-8;
+    @apply ml-8 font-serif;
   }
 
   .markdown ul > li {
@@ -94,13 +89,13 @@
   }
 
   .markdown blockquote {
-    @apply relative -mx-4 md:mx-10 md:my-10 lg:mx-20 lg:my-10 font-serif text-lg md:text-xl italic leading-relaxed md:leading-loose px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 bg-screen dark:bg-shadow rounded-lg;
+    @apply relative -mx-4 md:mx-10 md:my-10 lg:mx-20 lg:my-10 text-lg md:text-xl italic leading-relaxed md:leading-loose px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 bg-screen dark:bg-shadow rounded-lg font-serif;
   }
 
   .markdown blockquote::before,
   .markdown blockquote::after {
-    @apply absolute font-sans opacity-75 text-7xl leading-none p-1;
-    @apply bg-clip-text bg-gradient-to-b from-fuch-700 to-indigo-700 dark:from-gold-400 dark:to-flame-400 text-transparent;
+    @apply absolute opacity-75 text-7xl leading-none p-1;
+    @apply bg-clip-text bg-gradient-to-b from-fuch-700 to-indigo-700 dark:from-gold-300 dark:to-flame-300 text-transparent font-serif;
   }
 
   .markdown blockquote::before {
@@ -114,7 +109,7 @@
   }
 
   .markdown a {
-    @apply pretty-link;
+    @apply pretty-link font-sans;
     opacity: 1;
   }
 

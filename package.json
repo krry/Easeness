@@ -29,6 +29,9 @@
     ]
   },
   "dependencies": {
+    "@fontsource/inconsolata": "^4.1.0",
+    "@fontsource/museomoderno": "^4.1.0",
+    "@fontsource/quicksand": "^4.1.0",
     "@sanity/block-content-to-react": "2.0.7",
     "@sanity/client": "1.149.2",
     "@sanity/image-url": "0.140.17",
@@ -47,6 +50,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^6.13.0",
+    "react-icons": "^4.1.0",
     "typescript": "^4.0.5"
   },
   "devDependencies": {

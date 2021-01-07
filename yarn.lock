@@ -139,6 +139,21 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/inconsolata@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/inconsolata/-/inconsolata-4.1.0.tgz#968617ff247bd481de594d5316cdd60d73e398f6"
+  integrity sha512-tnG6MuO/DEUZ8KyuR//R3Q6U6lpb7S46kYyGRtG/qIAqRv9eTuDH5dThkuR4v+AmIykdFdwNMs3UN2D5aCkQWg==
+
+"@fontsource/museomoderno@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/museomoderno/-/museomoderno-4.1.0.tgz#1e59b0f50993188d173da2a5d485519cc274ab9b"
+  integrity sha512-+KdjmkhHuPrNTBEcLMp+LdSFwJEa2jGn77vT+WtPniZgCTY/F4epHzF0xd/KGEnbQegeQ0s6HUYZ7JX6430s5A==
+
+"@fontsource/quicksand@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/quicksand/-/quicksand-4.1.0.tgz#4cc047099e3fc44d4ac46eb4e8b5334b7a826280"
+  integrity sha512-1r4lJoecSXRzeRNkfO133d3xXZzlePVDsAnOxsHYTaTfvvaybQlqYXXyrDd86PosPTYq1nSe+P0CjntGVzG49A==
+
 "@fullhuman/postcss-purgecss@^2.1.2":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-2.3.0.tgz#50a954757ec78696615d3e118e3fee2d9291882e"
@@ -5366,6 +5381,11 @@ react-hook-form@^6.13.0:
   version "6.13.1"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.13.1.tgz#b9c0aa61f746db8169ed5e1050de21cacb1947d6"
   integrity sha512-Q0N7MYcbA8SigYufb02h9z97ZKCpIbe62rywOTPsK4Ntvh6fRTGDXSuzWuRhLHhArLoWbGrWYSNSS4tlb+OFXg==
+
+react-icons@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.1.0.tgz#9ca9bcbf2e3aee8e86e378bb9d465842947bbfc3"
+  integrity sha512-FCXBg1JbbR0vWALXIxmFAfozHdVIJmmwCD81Jk0EKOt7Ax4AdBNcaRkWhR0NaKy9ugJgoY3fFvo0PHpte55pXg==
 
 react-is@16.13.1, react-is@^16.8.1:
   version "16.13.1"
