@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import {HOME_OG_IMAGE_URL} from '../lib/constants'
+
+import {HOME_OG_IMAGE_URL, SITE_DESCRIPTION} from '../lib/constants'
 
 const Meta = () => {
   return (
@@ -14,7 +15,7 @@ const Meta = () => {
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#30007A" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta name="description" content={`Easeness brings ease to busyness, makes business easy.`} />
+      <meta name="description" content={SITE_DESCRIPTION} />
       <meta property="og:image" content={HOME_OG_IMAGE_URL} />
     </Head>
   )
