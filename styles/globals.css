@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply text-gray-900 transition-colors duration-700 bg-gradient-to-tr from-indigo-100 to-cyan-100 rainbow-wheel dark:text-gray-100 dark:from-indigo-900 dark:to-purp-900;
+    @apply text-gray-900 transition-colors duration-700 bg-gradient-to-tr from-lime-200 via-cyan-200 to-indigo-200 rainbow-wheel dark:text-gray-100 dark:from-cyan-800 dark:via-indigo-800 dark:to-purp-800;
   }
 
   h1,
@@ -22,14 +22,14 @@
 }
 
 @layer components {
-  .dinkus {
-    @apply relative h-6 mt-32 mb-24 leading-none text-center border-0 overflow-visible;
+  hr.dinkus {
+    @apply relative h-6 mt-16 mb-24 leading-none text-center border-0 overflow-visible;
   }
 
-  .dinkus::after {
+  hr.dinkus::after {
     content: attr(data-content);
 
-    @apply relative inline-block text-5xl md:text-6xl lg:text-7xl text-cyan-900 dark:text-flame-100 p-4;
+    @apply relative inline-block text-4xl md:text-5xl lg:text-6xl text-cyan-900 dark:text-flame-100 p-4;
   }
 
   .btn {
