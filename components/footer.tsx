@@ -14,7 +14,7 @@ const Footer = () => {
             </Link>
           </h3>
           <div className="flex flex-col items-center justify-center lg:flex-row lg:pl-4 lg:w-1/2">
-            <a href="https://nameless.atmanaut.us" className="mx-3 font-bold pretty-link">
+            <a href="https://nameless.easeness.biz" className="mx-3 font-bold pretty-link">
               Nameless
             </a>
             <a href="https://passage.atmanautica.com" className="mx-3 font-bold pretty-link">
