@@ -6,8 +6,8 @@ See [the example repo's docs](./docs/next-sanity-README.md) for instructions and
 
 ## Commands
 
-- Dev: `yarn dev`
-- Build: `yarn build`
-- Lint: `yarn lint`
-- Format: `yarn format`
+- Dev: `npm run dev`
+- Build: `npm run build`
+- Lint: `npm run lint`
+- Format: `npm run format`
 - Deploy: `git push origin main`
