@@ -1,4 +1,5 @@
 import cn from 'classnames'
+
 import Container from './container'
 
 const Alert = ({preview}) => {

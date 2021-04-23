@@ -1,5 +1,6 @@
-import {SITE_TITLE} from '../lib/constants'
 import Link from 'next/link'
+
+import {SITE_TITLE} from '../lib/constants'
 import SiteNav from './site-nav'
 
 const SiteHeader = ({pages}) => {

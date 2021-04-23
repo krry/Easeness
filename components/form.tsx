@@ -5,7 +5,7 @@ export default function Form({_id}) {
   const [formData, setFormData] = useState({name: '', email: '', comment: ''})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
-  const {register, handleSubmit, watch, errors} = useForm()
+  const {register, handleSubmit, errors} = useForm()
 
   const onSubmit = async (data: (prevState: undefined) => undefined) => {
     const requestHeaders: HeadersInit = new Headers()
@@ -74,7 +74,7 @@ export default function Form({_id}) {
                 placeholder="your@email.com"
               />
               <aside className="block text-xs text-right text-gray-700">
-                ‡Don't worry, spam isn't easeness.
+                ‡Don&apos;t worry, spam isn&apos;t easeness.
               </aside>
             </label>
           </div>
