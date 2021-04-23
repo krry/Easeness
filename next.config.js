@@ -1,4 +1,8 @@
 module.exports = {
+  future: {
+    webpack5: true,
+  },
+  target: 'experimental-serverless-trace',
   images: {
     domains: ['cdn.sanity.io'],
   },
