@@ -1,6 +1,6 @@
 import Avatar from './avatar'
 import CoverImage from './cover-image'
-import Date from './date'
+import Datetime from './datetime'
 import PostTitle from './post-title'
 
 const PostHeader = ({title, coverImage, date, author}) => {
@@ -15,7 +15,7 @@ const PostHeader = ({title, coverImage, date, author}) => {
           <Avatar name={author.name} picture={author.avatar} />
         </div>
         <div className="mb-6 text-md">
-          <Date dateString={date} />
+          <Datetime dateString={date} />
         </div>
       </div>
     </section>

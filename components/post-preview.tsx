@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import CoverImage from './cover-image'
-import Date from './date'
+import Datetime from './datetime'
 
 const PostPreview = ({title, coverImage, date, excerpt, slug}) => {
   return (
@@ -15,7 +15,7 @@ const PostPreview = ({title, coverImage, date, excerpt, slug}) => {
         </Link>
       </h3>
       <div className="mb-4 text-sm tracking-tight text-gray-700 transition-opacity duration-200 dark:text-gray-600">
-        <Date dateString={date} />
+        <Datetime dateString={date} />
       </div>
       <p className="mb-4 font-serif text-lg leading-relaxed tracking-wide">{excerpt}</p>
     </div>

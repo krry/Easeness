@@ -1,4 +1,4 @@
-import Date from './date'
+import Datetime from './datetime'
 
 const Comments = ({comments = []}) => {
   return (
@@ -15,7 +15,7 @@ const Comments = ({comments = []}) => {
               <a href={`mailto:${email}`} className="pretty-link">
                 {name}
               </a>{' '}
-              (<Date dateString={_createdAt} />)
+              (<Datetime dateString={_createdAt} />)
             </h4>
             <p>{comment}</p>
             <hr className="mt-5 mb-5" />

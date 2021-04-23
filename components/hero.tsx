@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import CoverImage from './cover-image'
-import Date from './date'
+import Datetime from './datetime'
 
 // TODO: offer a call-to-action
 const Hero = ({title, coverImage, date, excerpt, slug}) => {
@@ -18,7 +18,7 @@ const Hero = ({title, coverImage, date, excerpt, slug}) => {
             </Link>
           </h3>
           <div className="mb-4 text-lg md:mb-0">
-            <Date dateString={date} />
+            <Datetime dateString={date} />
           </div>
         </div>
         <div>
