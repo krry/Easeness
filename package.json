@@ -1,84 +1,86 @@
 {
-  "name": "easeness-next",
-  "version": "0.1.5",
-  "license": "CC-BY-NC-SA-4.0",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "deploy-static": "next export",
-    "start": "next build; next start",
-    "lint": "eslint ./ --fix --ext ts,tsx,js",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run format",
-      "pre-push": "npm run build"
-    }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "dependencies": {
-    "@emotion/react": "^11.1.5",
-    "@fontsource/inconsolata": "^4.1.0",
-    "@fontsource/museomoderno": "^4.1.0",
-    "@fontsource/quicksand": "^4.1.0",
-    "@sanity/block-content-to-react": "2.0.7",
-    "@sanity/client": "^2.10.2-next.0",
-    "@sanity/image-url": "0.140.17",
-    "@tailwindcss/typography": "^0.3.1",
-    "@types/classnames": "^2.2.11",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^14.14.7",
-    "@types/react": "^16.9.56",
-    "@types/react-dom": "^16.9.9",
-    "autoprefixer": "^10.1.0",
-    "axios": "^0.21.0",
-    "classnames": "2.2.6",
-    "date-fns": "2.10.0",
-    "next": "^10.2.0",
-    "next-sanity-image": "^2.0.0",
-    "postcss": "^8.2.1",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-hook-form": "^6.13.0",
-    "react-icons": "^4.2.0",
-    "react-spinners": "^0.10.6",
-    "typescript": "^4.0.5"
-  },
-  "devDependencies": {
-    "@asbjorn/eslint-plugin-groq": "^1.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.7.0",
-    "@typescript-eslint/parser": "^4.7.0",
-    "eslint": "^7.13.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-simple-import-sort": "^5.0.3",
-    "groq": "^0.142.0",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
-    "postcss-advanced-variables": "^3.0.1",
-    "postcss-preset-env": "^6.7.0",
-    "prettier": "^2.1.2",
-    "standard": "^16.0.3",
-    "standardx": "^7.0.0",
-    "stylelint": "^13.12.0",
-    "stylelint-config-standard": "^21.0.0",
-    "tailwindcss": "^2.0.2",
-    "tailwindcss-dark-mode": "^1.1.7"
-  }
+	"name": "easeness-next",
+	"description": "Easeness is to business as easiness is to busyness",
+	"version": "0.1.5",
+	"license": "CC-BY-NC-SA-4.0",
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"deploy-static": "next export",
+		"start": "next build; next start",
+		"lint": "eslint ./ --fix --ext ts,tsx,js",
+		"format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run lint && npm run format",
+			"pre-push": "npm run build"
+		}
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"dependencies": {
+		"@emotion/react": "^11.1.5",
+		"@fontsource/inconsolata": "^4.1.0",
+		"@fontsource/museomoderno": "^4.1.0",
+		"@fontsource/quicksand": "^4.1.0",
+		"@sanity/block-content-to-react": "2.0.7",
+		"@sanity/client": "^2.10.2-next.0",
+		"@sanity/image-url": "0.140.17",
+		"@tailwindcss/typography": "^0.3.1",
+		"@types/classnames": "^2.2.11",
+		"@types/jest": "^26.0.15",
+		"@types/node": "^14.14.7",
+		"@types/react": "^16.9.56",
+		"@types/react-dom": "^16.9.9",
+		"autoprefixer": "^10.1.0",
+		"axios": "^0.21.0",
+		"classnames": "2.2.6",
+		"date-fns": "2.10.0",
+		"next": "^10.2.0",
+		"next-sanity-image": "^2.0.0",
+		"next-themes": "^0.0.14",
+		"postcss": "^8.2.1",
+		"react": "latest",
+		"react-dom": "latest",
+		"react-hook-form": "^6.13.0",
+		"react-icons": "^4.2.0",
+		"react-spinners": "^0.10.6",
+		"typescript": "^4.0.5"
+	},
+	"devDependencies": {
+		"@asbjorn/eslint-plugin-groq": "^1.0.0",
+		"@typescript-eslint/eslint-plugin": "^4.7.0",
+		"@typescript-eslint/parser": "^4.7.0",
+		"eslint": "^7.13.0",
+		"eslint-config-prettier": "^6.15.0",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-jsx-a11y": "^6.4.1",
+		"eslint-plugin-prettier": "^3.1.4",
+		"eslint-plugin-react": "^7.21.5",
+		"eslint-plugin-react-hooks": "^4.2.0",
+		"eslint-plugin-simple-import-sort": "^5.0.3",
+		"groq": "^0.142.0",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.5.1",
+		"postcss-advanced-variables": "^3.0.1",
+		"postcss-preset-env": "^6.7.0",
+		"prettier": "^2.1.2",
+		"standard": "^16.0.3",
+		"standardx": "^7.0.0",
+		"stylelint": "^13.12.0",
+		"stylelint-config-standard": "^21.0.0",
+		"tailwindcss": "^2.0.2",
+		"tailwindcss-dark-mode": "^1.1.7"
+	}
 }

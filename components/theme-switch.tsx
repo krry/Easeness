@@ -1,60 +1,40 @@
-import React, {Fragment, useEffect, useState} from 'react'
+import { useTheme } from 'next-themes'
+import { Fragment } from 'react'
 
-let fresh = true
+export const themes = [
+	{ name: 'system', emoji: '💻' },
+	{ name: 'light', emoji: '🌞' },
+	{ name: 'dark', emoji: '🌝' },
+	// { name: 'land', emoji: '🌳' },
+	// { name: 'sea', emoji: '🐳' },
+	// { name: 'fuch', emoji: '🌺' },
+]
 
-const checkDarkMode = () => {
-  const userPrefDark = matchMedia && matchMedia('(prefers-color-scheme: dark)').matches
-  const storedPrefDark = window.localStorage && localStorage.getItem('mode') === 'dark'
-  return userPrefDark || storedPrefDark
+export default function ThemeSwitch() {
+	const { theme, setTheme } = useTheme()
+	console.log('theme', theme)
+	let dex = themes.findIndex(node => node.name === theme) ?? 0
+	let themoji = themes[dex]?.emoji ?? '🌳'
+	console.log('dex', dex)
+
+	const nextTheme = () => {
+		console.log('nexdex', dex)
+		dex = dex + 1 < themes.length ? dex + 1 : 0
+		setTheme(themes[dex].name)
+		themoji = themes[dex].emoji
+	}
+
+	return (
+		<Fragment>
+			<button
+				type='button'
+				className='sticky m-3 text-4xl rounded-full outline-none md:text-5xl lg:text-6xl bg-none focus:outline-none hover:opacity-100 top-2 right-2 md:top-3 md:right-3 lg:top-4 lg:right-4 moonface dark:moonshine dark:shimmer'
+				onClick={nextTheme}>
+				<span>{themoji}</span>
+				<span aria-hidden='true' hidden>
+					{theme + 'mode'}
+				</span>
+			</button>
+		</Fragment>
+	)
 }
-
-const watchDarkMode = () => {
-  if (!window.matchMedia) return
-  const darkMediaQuery = matchMedia('(prefers-color-scheme: dark)')
-  darkMediaQuery.addEventListener('change', applyDarkMode)
-}
-
-const applyDarkMode = (_, darkMode?: boolean) => {
-  const prevDark = checkDarkMode && fresh
-  if (prevDark || darkMode) {
-    window.localStorage.setItem('mode', 'dark')
-    document.documentElement.classList.add('dark')
-  } else {
-    window.localStorage.setItem('mode', 'light')
-    document.documentElement.classList.remove('dark')
-  }
-}
-
-const ModeSwitch = () => {
-  const [darkMode, setDarkMode] = useState(false)
-  const flipMode = () => {
-    fresh = false
-    setDarkMode(!darkMode)
-  }
-
-  useEffect(() => {
-    setDarkMode(checkDarkMode())
-    watchDarkMode()
-  }, [])
-
-  useEffect(() => {
-    applyDarkMode(null, darkMode)
-  }, [darkMode])
-
-  return (
-    <Fragment>
-      <button
-        type="button"
-        className="sticky m-3 text-4xl rounded-full outline-none md:text-5xl lg:text-6xl bg-none focus:outline-none hover:opacity-100 top-2 right-2 md:top-3 md:right-3 lg:top-4 lg:right-4 moonface dark:moonshine dark:shimmer"
-        aria-pressed={darkMode ? 'true' : 'false'}
-        onClick={flipMode}>
-        <span>{darkMode ? '🌝' : '🌚'}</span>
-        <span aria-hidden="true" hidden>
-          {darkMode ? 'dark mode' : 'light mode'}
-        </span>
-      </button>
-    </Fragment>
-  )
-}
-
-export default ModeSwitch
