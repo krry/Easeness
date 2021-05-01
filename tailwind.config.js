@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // tailwind.config.js
 const defaultTheme = require('tailwindcss/defaultTheme')
-const plugin = require('tailwindcss/plugin')
+// const plugin = require('tailwindcss/plugin')
 
 module.exports = {
 	darkMode: 'class',
@@ -129,7 +129,7 @@ module.exports = {
 				'8xl': '6rem',
 			},
 			fontFamily: {
-				serif: ['quicksand', ...defaultTheme.fontFamily.serif],
+				serif: ['Quicksand', ...defaultTheme.fontFamily.serif],
 				mono: ['Inconsolata', ...defaultTheme.fontFamily.mono],
 				sans: ['MuseoModerno', ...defaultTheme.fontFamily.sans],
 			},

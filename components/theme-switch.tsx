@@ -12,13 +12,10 @@ export const themes = [
 
 export default function ThemeSwitch() {
 	const { theme, setTheme } = useTheme()
-	console.log('theme', theme)
 	let dex = themes.findIndex(node => node.name === theme) ?? 0
 	let themoji = themes[dex]?.emoji ?? '🌳'
-	console.log('dex', dex)
 
 	const nextTheme = () => {
-		console.log('nexdex', dex)
 		dex = dex + 1 < themes.length ? dex + 1 : 0
 		setTheme(themes[dex].name)
 		themoji = themes[dex].emoji

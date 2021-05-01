@@ -112,7 +112,7 @@ const PostBody = ({ content }) => {
 			},
 			internalink: props => {
 				const { slug = {} } = props.mark
-				const href = `/${slug.current}`
+				const href = `/${slug?.current}`
 				// console.log('internal link to', props.mark)
 				return <a href={href}>{props.children}</a>
 			},

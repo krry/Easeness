@@ -27,7 +27,7 @@ const CoverImage = (props: CIProps) => {
 		/>
 	)
 	return (
-		<div className={`-mx-5 sm:mx-0 ${classes}`}>
+		<div className={`-mx-1 sm:mx-0 ${classes}`}>
 			{slug ? (
 				<Link href={`/${slug}`}>
 					<a aria-label={title}>{image}</a>
