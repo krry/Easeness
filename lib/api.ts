@@ -1,27 +1,27 @@
-import client, {previewClient} from './sanity'
+import client, { previewClient } from './sanity'
 
 const getUniquePosts = (posts: any[]) => {
-  const slugs = new Set()
-  return posts.filter((post) => {
-    if (slugs.has(post.slug)) {
-      return false
-    } else {
-      slugs.add(post.slug)
-      return true
-    }
-  })
+	const slugs = new Set()
+	return posts.filter(post => {
+		if (slugs.has(post.slug)) {
+			return false
+		} else {
+			slugs.add(post.slug)
+			return true
+		}
+	})
 }
 
 const getUniquePages = (posts: any[]) => {
-  const slugs = new Set()
-  return posts.filter((post) => {
-    if (slugs.has(post.slug)) {
-      return false
-    } else if (post.doc.name === 'page') {
-      slugs.add(post.slug)
-      return true
-    }
-  })
+	const slugs = new Set()
+	return posts.filter(post => {
+		if (slugs.has(post.slug)) {
+			return false
+		} else if (post.doc.name === 'page') {
+			slugs.add(post.slug)
+			return true
+		}
+	})
 }
 
 const postFields = `
@@ -60,63 +60,69 @@ const bodyWithLinkSlugs = `
   },
 `
 
-export const getPostBySlug = async (slug: string | string[], preview: boolean) => {
-  const curClient = getClient(preview)
-  const [post] = await Promise.all([
-    curClient.fetch(
-      `
+export const getPostBySlug = async (
+	slug: string | string[],
+	preview: boolean
+) => {
+	const curClient = getClient(preview)
+	const [post] = await Promise.all([
+		curClient.fetch(
+			`
       *[_type == 'post' && slug.current == '${slug}'] {
         ${postFields}
         ${bodyWithLinkSlugs}
       }`,
-      {slug},
-    ),
-  ])
-  return post[0]
+			{ slug }
+		),
+	])
+	return post[0]
 }
 
 const getClient = (preview: boolean) => {
-  return preview ? previewClient : client
+	return preview ? previewClient : client
 }
 
 export const getAllPostsWithSlug = async () => {
-  const data = await client.fetch(`
+	const data = await client.fetch(`
     *[_type == 'post']{ 'slug': slug.current }
   `)
-  return data
+	return data
 }
 
 export const getPreviewPostBySlug = async (slug: string) => {
-  const data = await getClient(true).fetch(
-    `
+	const data = await getClient(true).fetch(
+		`
     *[_type == "post" && slug.current == $slug] | order(date desc){
       ${postFields}
       ${bodyWithLinkSlugs}
     }`,
-    {slug},
-  )
-  return data[0]
+		{ slug }
+	)
+	return data[0]
 }
 
 export const getAllPostsForNav = async (preview: boolean) => {
-  const results = await getClient(preview).fetch(pageQuery)
-  return getUniquePages(results)
+	const results = await getClient(preview).fetch(pageQuery)
+	return getUniquePages(results)
 }
 
 export const getAllPosts = async (preview: boolean) => {
-  const results = await getClient(preview).fetch(`
+	const results = await getClient(preview).fetch(`
     *[_type == "post"] | order(date desc, _updatedAt desc) {
       ${postFields}
     }`)
-  return getUniquePosts(results)
+	return getUniquePosts(results)
 }
 
-export const getPostAndMorePosts = async (slug: string | string[], preview: boolean) => {
-  const curClient = getClient(preview)
-  const [post, morePosts] = await Promise.all([
-    curClient
-      .fetch(
-        `
+export const getPostAndMorePosts = async (
+	slug: string | string[],
+	preview: boolean
+) => {
+	const curClient = getClient(preview)
+	const [post, morePosts] = await Promise.all([
+		curClient
+			.fetch(
+				`
       *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) {
         ${postFields}
         ${bodyWithLinkSlugs}
@@ -128,17 +134,17 @@ export const getPostAndMorePosts = async (slug: string | string[], preview: bool
           _createdAt
         }
       }`,
-        {slug},
-      )
-      .then((res) => res?.[0]),
-    curClient.fetch(
-      `
+				{ slug }
+			)
+			.then(res => res?.[0]),
+		curClient.fetch(
+			`
       *[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc) {
         ${postFields}
         content,
       }[0...2]`,
-      {slug},
-    ),
-  ])
-  return {post, morePosts: getUniquePosts(morePosts)}
+			{ slug }
+		),
+	])
+	return { post, morePosts: getUniquePosts(morePosts) }
 }
