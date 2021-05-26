@@ -1074,21 +1074,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/inconsolata@^4.1.0":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/inconsolata/-/inconsolata-4.2.2.tgz#f3c6725a1e46ce146b67e2f7925fb7ca9f7df188"
-  integrity sha512-r05K64Mbqu1nI8I779i18rhokiJqrBAoBN6heRwqnXW5h1E+ZRlWlBt3MuW1HcFBxWiyhPV9h4e3DN+X8eM3hA==
-
-"@fontsource/museomoderno@^4.1.0":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/museomoderno/-/museomoderno-4.2.2.tgz#d75d44389d51e78e10492cde072fdf1f4c350551"
-  integrity sha512-iXAl17UEo2GvmSZQSDRKAnqePieZ1YTM5vfFeqaCcIDCttjWMUKGCgNLe58ejKqqk0UekmaKDKa0ESTRWANMVw==
-
-"@fontsource/quicksand@^4.1.0":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/quicksand/-/quicksand-4.2.2.tgz#50811e16611266dcee8a8e0767e770b23e68ed79"
-  integrity sha512-YaEG3b5eST4eyj2E28tkJJwnUSMP/zvxI7K/Nx9mkk5aqgDp2WJFzcQ84MFnFVwgy+mZodpzPaPJ6KGtv0q/lg==
-
 "@fullhuman/postcss-purgecss@^2.1.2":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-2.3.0.tgz#50a954757ec78696615d3e118e3fee2d9291882e"
