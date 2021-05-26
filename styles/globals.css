@@ -19,6 +19,10 @@
 	h6 {
 		@apply font-sans leading-tight;
 	}
+
+	::selection {
+		@apply bg-fuch-700 text-gray-100 dark:bg-flame-300 dark:text-gray-900;
+	}
 }
 
 @layer components {
