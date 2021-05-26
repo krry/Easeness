@@ -13,7 +13,7 @@ export const themes = [
 export default function ThemeSwitch() {
 	const { theme, setTheme } = useTheme()
 	let dex = themes.findIndex(node => node.name === theme) ?? 0
-	let themoji = themes[dex]?.emoji ?? '🌳'
+	let themoji = themes[dex]?.emoji ?? '💻'
 
 	const nextTheme = () => {
 		dex = dex + 1 < themes.length ? dex + 1 : 0
@@ -29,7 +29,7 @@ export default function ThemeSwitch() {
 				onClick={nextTheme}>
 				<span>{themoji}</span>
 				<span aria-hidden='true' hidden>
-					{theme + 'mode'}
+					{theme + ' mode'}
 				</span>
 			</button>
 		</Fragment>
