@@ -23,7 +23,7 @@
 		text-decoration-color: theme(colors.cyan[700]);
 	}
 
-	.theme-dark .pretty-link:hover {
+	.dark .pretty-link:hover {
 		text-decoration-color: theme(colors.gold[400]);
 	}
 
