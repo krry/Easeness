@@ -107,7 +107,7 @@
 		@apply overflow-hidden sm:rounded-full;
 	}
 
-	.cover-image.no-ib div {
+	.cover-image div {
 		display: block !important;
 	}
 

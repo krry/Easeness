@@ -45,6 +45,7 @@
 		"axios": "^0.21.0",
 		"classnames": "2.2.6",
 		"date-fns": "2.10.0",
+		"framer-motion": "^4.1.17",
 		"next": "^10.2.0",
 		"next-pwa": "^5.2.18",
 		"next-sanity-image": "^2.0.0",
