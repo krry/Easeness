@@ -12,6 +12,7 @@
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
+		"jsxImportSource": "react",
 		"jsx": "react-jsx"
 	},
 	"include": [

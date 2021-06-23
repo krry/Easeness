@@ -56,7 +56,7 @@
 		"react-hook-form": "^6.13.0",
 		"react-icons": "^4.2.0",
 		"react-spinners": "^0.10.6",
-		"typescript": "^4.0.5"
+		"typescript": "^4.1"
 	},
 	"devDependencies": {
 		"@asbjorn/eslint-plugin-groq": "^1.0.0",
