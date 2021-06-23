@@ -3,9 +3,7 @@ import { getPreviewPostBySlug } from '../../lib/api'
 const preview = async (
 	req: { query: { secret: string; slug: string } },
 	res: {
-		status: (
-			arg0: number
-		) => {
+		status: (arg0: number) => {
 			(): any
 			new (): any
 			json: { (arg0: { message: string }): any; new (): any }
