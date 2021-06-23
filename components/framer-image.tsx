@@ -14,7 +14,7 @@ type FIProps = {
 interface SrcEvent {
 	target: { src: string }
 }
-
+// had to specialize the type as described here: https://stackoverflow.com/questions/47266836/how-to-use-onload-event-from-image-in-typescript
 function isSrcEvent(e: any): e is SrcEvent {
 	return e && e.target.src !== undefined
 }

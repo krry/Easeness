@@ -1,10 +1,11 @@
 /* eslint-disable react/display-name */
 import PortableText from '@sanity/block-content-to-react'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { Fragment, ReactElement, useState } from 'react'
+
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 
-const PostBody = ({ content }) => {
+const PostBody = ({ content }): ReactElement<any, any> => {
 	const [readMore, setReadMore] = useState(true)
 
 	const serializers = {
@@ -120,15 +121,15 @@ const PostBody = ({ content }) => {
 	}
 
 	return (
-		<div className='max-w-full mx-auto md:max-w-2xl lg:max-w-4xl'>
+		<Fragment className='max-w-full mx-auto md:max-w-2xl lg:max-w-4xl'>
 			<PortableText
 				blocks={content}
 				dataset='production'
 				projectId={projectId}
 				serializers={serializers}
-				className='text-base leading-relaxed markdown sm:text-lg md:text-xl'
+				className='text-base leading-relaxed markdown sm:text-lg md:text-xl lg:text-2xl'
 			/>
-		</div>
+		</Fragment>
 	)
 }
 
