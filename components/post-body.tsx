@@ -1,11 +1,11 @@
 /* eslint-disable react/display-name */
 import PortableText from '@sanity/block-content-to-react'
 import Image from 'next/image'
-import React, { Fragment, ReactElement, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 
-const PostBody = ({ content }): ReactElement<any, any> => {
+const PostBody = ({ content }) => {
 	const [readMore, setReadMore] = useState(true)
 
 	const serializers = {
