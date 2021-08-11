@@ -1,5 +1,5 @@
 module.exports = {
-	extends: ['stylelint-config-standard'],
+	// extends: [],
 	rules: {
 		indentation: 'tab',
 		'at-rule-no-unknown': [

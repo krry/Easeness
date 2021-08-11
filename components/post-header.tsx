@@ -12,7 +12,7 @@ const PostHeader = ({ title, coverImage, date, author }) => {
 			</div>
 			<div className='max-w-full mx-auto md:max-w-2xl lg:max-w-4xl'>
 				<div className='block mb-6 md:mb-12'>
-					<Avatar name={author.name} picture={author.avatar} />
+					<Avatar name={author?.name} picture={author?.avatar} />
 				</div>
 				<div className='mb-6 text-md'>
 					<Datetime dateString={date} />

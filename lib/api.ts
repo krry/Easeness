@@ -17,7 +17,7 @@ const getUniquePages = (posts: any[]) => {
 	return posts.filter(post => {
 		if (slugs.has(post.slug)) {
 			return false
-		} else if (post.doc.name === 'page') {
+		} else if (post.doc?.name === 'page') {
 			slugs.add(post.slug)
 			return true
 		}
