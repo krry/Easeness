@@ -1,7 +1,7 @@
 {
-	"name": "Easeness",
+	"background_color": "#469A9D",
 	"description": "Easeness is to business as easiness is to busyness",
-	"short_name": "Easeness",
+	"display": "standalone",
 	"icons": [
 		{
 			"src": "/favicon/favicon-72x72.png",
@@ -52,9 +52,10 @@
 			"purpose": "any maskable"
 		}
 	],
+	"lang": "en",
+	"name": "Easeness",
 	"scope": "/",
+	"short_name": "Easeness",
 	"start_url": "/?source=pwa",
-	"display": "standalone",
-	"theme_color": "#469A9D",
-	"background_color": "#469A9D"
+	"theme_color": "#469A9D"
 }
