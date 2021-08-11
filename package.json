@@ -4,7 +4,7 @@
 	"version": "0.1.8",
 	"license": "MIT",
 	"scripts": {
-		"dev": "next dev -p 2098",
+		"dev": "next dev",
 		"build": "next build",
 		"deploy-static": "next export",
 		"start": "next build; next start",
