@@ -52,7 +52,7 @@ const Post = ({ post, morePosts, preview, navPosts }) => {
 							<PostBody content={post.content} />
 						</article>
 
-						{post.doc.name === 'post' && (
+						{post?.doc?.name === 'post' && (
 							<section>
 								<Comments comments={post?.comments} />
 								<Form _id={post._id} />
