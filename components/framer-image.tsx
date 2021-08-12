@@ -37,8 +37,7 @@ const FramerImage = (props: FIProps) => {
 			animationControls.start('visible')
 		}
 	}, [loaded, animationControls])
-	console.log('framer-image url', url)
-	console.log('framer-image slug', slug)
+
 	return (
 		<motion.div
 			initial={'hidden'}
