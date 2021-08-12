@@ -9,6 +9,7 @@ type FIProps = {
 	title: string
 	url: string
 	slug?: string
+	classes?: string
 }
 
 interface SrcEvent {
@@ -36,7 +37,8 @@ const FramerImage = (props: FIProps) => {
 			animationControls.start('visible')
 		}
 	}, [loaded, animationControls])
-
+	console.log('framer-image url', url)
+	console.log('framer-image slug', slug)
 	return (
 		<motion.div
 			initial={'hidden'}
@@ -44,8 +46,8 @@ const FramerImage = (props: FIProps) => {
 			variants={animationVariants}
 			transition={{ ease: 'easeOut', duration: 0.75 }}>
 			<Image
-				width={2000}
-				height={1000}
+				width={1920}
+				height={960}
 				alt={`A beautiful ${title}`}
 				className={cn('shadow-small', {
 					'hover:shadow-large transition-shadow duration-200': slug,

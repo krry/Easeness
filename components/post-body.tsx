@@ -29,8 +29,8 @@ const PostBody = ({ content }) => {
 					return (
 						<figure>
 							<Image
-								src={props.node.slug}
-								alt={props.node.caption}
+								src={props.node.slug || '/potato.jpg'}
+								alt={props.node.caption || 'I am a potato'}
 								width={2000}
 								height={1000}
 							/>
