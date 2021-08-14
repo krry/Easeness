@@ -15,8 +15,8 @@ const Hero = ({ title, coverImage, date, excerpt, slug }) => {
 					classes='cover-image no-ib'
 				/>
 			</div>
-			<div className='mb-20 md:grid md:grid-cols-2 md:gap-y-16 lg:gap-y-8 md:mb-24'>
-				<div>
+			<div className='mb-20 md:grid md:grid-cols-3 md:gap-y-16 lg:gap-y-8 md:mb-24'>
+				<div className='col-span-2'>
 					<h3 className='mb-4 text-4xl font-bold leading-tight tracking-tight lg:text-6xl'>
 						<Link href={`/${slug}`}>
 							<a className='pretty-link'>{title}</a>
@@ -27,7 +27,7 @@ const Hero = ({ title, coverImage, date, excerpt, slug }) => {
 					</div>
 				</div>
 				<div>
-					<p className='mb-4 font-serif text-lg leading-relaxed tracking-wide'>
+					<p className='pl-6 mt-1 mb-4 font-serif text-lg leading-relaxed tracking-wide'>
 						{excerpt}
 					</p>
 				</div>
