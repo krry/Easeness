@@ -22,8 +22,8 @@ module.exports = {
 		colors: {
 			inherit: 'inherit',
 			transparent: 'transparent',
-			screen: 'hsla(172, 50%, 96%, 0.33)',
-			shadow: 'hsla(233, 50%, 4%, 0.25)',
+			screen: 'hsla(172, 50%, 96%, 0.39)',
+			shadow: 'hsla(233, 50%, 4%, 0.39)',
 			black: '#05090a',
 			white: '#fff',
 			gray: {
@@ -140,6 +140,12 @@ module.exports = {
 			},
 			borderRadius: {
 				50: '50rem',
+			},
+			borderWidth: {
+				'3vh': '2vh',
+			},
+			borderStyle: {
+				inset: 'inset',
 			},
 			keyframes: {
 				burn: {
