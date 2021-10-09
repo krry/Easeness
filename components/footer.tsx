@@ -15,6 +15,11 @@ const Footer = () => {
 					</h3>
 					<div className='flex flex-col items-center justify-center lg:flex-row lg:pl-4 lg:w-1/2'>
 						<a
+							href={'https://kerrbe.ar'}
+							className='mx-3 font-bold pretty-link'>
+							Kerrbear&apos;s
+						</a>
+						<a
 							href='https://nameless.quest'
 							className='mx-3 font-bold pretty-link'>
 							Nameless
@@ -24,15 +29,10 @@ const Footer = () => {
 							className='mx-3 font-bold pretty-link'>
 							Atmanaut
 						</a>
-						<a
-							href={`https://krry.dev/`}
-							className='mx-3 font-bold pretty-link'>
-							k·rry.dev
-						</a>
 						<span className='mx-3 font-bold'>
 							Made with 🧿 by{' '}
-							<a href='https://kerrbe.ar' className='pretty-link'>
-								Kerrbear
+							<a href={`https://krry.dev/`} className='pretty-link'>
+								k·rry.dev
 							</a>
 						</span>
 					</div>
