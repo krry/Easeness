@@ -25,14 +25,14 @@ const Footer = () => {
 							Atmanaut
 						</a>
 						<a
-							href={`https://kerrbear.wtf/`}
+							href={`https://krry.dev/`}
 							className='mx-3 font-bold pretty-link'>
-							Commonplace
+							k·rry.dev
 						</a>
 						<span className='mx-3 font-bold'>
 							Made with 🧿 by{' '}
-							<a href='https://krry.dev' className='pretty-link'>
-								krry
+							<a href='https://kerrbe.ar' className='pretty-link'>
+								Kerrbear
 							</a>
 						</span>
 					</div>
