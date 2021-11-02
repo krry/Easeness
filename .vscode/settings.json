@@ -1,4 +1,34 @@
 {
 	"WillLuke.nextjs.addTypesOnSave": true,
-	"WillLuke.nextjs.hasPrompted": true
+	"WillLuke.nextjs.hasPrompted": true,
+	"workbench.colorTheme": "Noctis Sereno",
+	"workbench.colorCustomizations": {
+		"activityBar.activeBackground": "#f06d42",
+		"activityBar.activeBorder": "#4ef176",
+		"activityBar.background": "#f06d42",
+		"activityBar.foreground": "#15202b",
+		"activityBar.inactiveForeground": "#15202b99",
+		"activityBarBadge.background": "#4ef176",
+		"activityBarBadge.foreground": "#15202b",
+		"editorGroup.border": "#f06d42",
+		"panel.border": "#f06d42",
+		"sash.hoverBorder": "#f06d42",
+		"sideBar.border": "#f06d42",
+		"statusBar.background": "#ec4913",
+		"statusBar.foreground": "#e7e7e7",
+		"statusBarItem.hoverBackground": "#f06d42",
+		"statusBarItem.remoteBackground": "#ec4913",
+		"statusBarItem.remoteForeground": "#e7e7e7",
+		"titleBar.activeBackground": "#ec4913",
+		"titleBar.activeForeground": "#e7e7e7",
+		"titleBar.inactiveBackground": "#ec491399",
+		"titleBar.inactiveForeground": "#e7e7e799",
+		"statusBar.border": "#ec4913",
+		"statusBar.debuggingBackground": "#13b6ec",
+		"statusBar.debuggingBorder": "#13b6ec",
+		"statusBar.debuggingForeground": "#15202b",
+		"tab.activeBorder": "#f06d42",
+		"titleBar.border": "#ec4913"
+	},
+	"peacock.color": "ec4913"
 }

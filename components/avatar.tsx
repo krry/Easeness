@@ -5,7 +5,7 @@ const Avatar = ({ name, picture }) => {
 		<div className='flex items-center transition-opacity duration-200 opacity-75 cursor-default hover:opacity-100'>
 			<Image
 				src={picture}
-				className='w-10 h-12 rounded-full'
+				className='w-12 h-12 rounded-full'
 				height={64}
 				width={48}
 				alt={name}
