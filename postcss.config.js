@@ -1,4 +1,4 @@
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 
 const prodPlugins = {
 	tailwindcss: {},
@@ -12,7 +12,7 @@ const prodPlugins = {
 			'custom-properties': false,
 		},
 	},
-}
+};
 const devPlugins = {
 	tailwindcss: {},
 	'postcss-advanced-variables': {},
@@ -22,8 +22,8 @@ const devPlugins = {
 			'custom-properties': false,
 		},
 	},
-}
+};
 
 module.exports = {
 	plugins: isProd ? prodPlugins : devPlugins,
-}
+};

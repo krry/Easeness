@@ -1,18 +1,18 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
-import FramerImage from './framer-image'
+import FramerImage from './framer-image';
 
 type CIProps = {
-	title: string
-	url: string
-	slug?: string
-	classes?: string
-}
+	title: string;
+	url: string;
+	slug?: string;
+	classes?: string;
+};
 
 // TODO: can we use next-sanity-image to speed up image loads and make them responsive? https://github.com/bundlesandbatches/next-sanity-image
 
 const CoverImage = (props: CIProps) => {
-	const { title, slug, classes } = props
+	const { title, slug, classes } = props;
 
 	return (
 		<div className={`-mx-1 sm:mx-0 ${classes}`}>
@@ -26,7 +26,7 @@ const CoverImage = (props: CIProps) => {
 				<FramerImage {...props} />
 			)}
 		</div>
-	)
-}
+	);
+};
 
-export default CoverImage
+export default CoverImage;

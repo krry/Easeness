@@ -1,28 +1,28 @@
-import client, { previewClient } from './sanity'
+import client, { previewClient } from './sanity';
 
 const getUniquePosts = (posts: any[]) => {
-	const slugs = new Set()
+	const slugs = new Set();
 	return posts.filter(post => {
 		if (slugs.has(post.slug)) {
-			return false
+			return false;
 		} else {
-			slugs.add(post.slug)
-			return true
+			slugs.add(post.slug);
+			return true;
 		}
-	})
-}
+	});
+};
 
 const getUniquePages = (posts: any[]) => {
-	const slugs = new Set()
+	const slugs = new Set();
 	return posts.filter(post => {
 		if (slugs.has(post.slug)) {
-			return false
+			return false;
 		} else if (post.doc?.name === 'page') {
-			slugs.add(post.slug)
-			return true
+			slugs.add(post.slug);
+			return true;
 		}
-	})
-}
+	});
+};
 
 const postFields = `
   name,
@@ -37,7 +37,7 @@ const postFields = `
   'coverImage': coverImage.asset->url,
   'doc': doc->{name},
   date,
-`
+`;
 
 const pageQuery = `
 *[_type == "post"] | order(date desc, _updatedAt desc){
@@ -46,7 +46,7 @@ const pageQuery = `
 	'slug': slug.current,
 	title
 }
-`
+`;
 
 const bodyWithLinkSlugs = `
   content[]{
@@ -58,13 +58,10 @@ const bodyWithLinkSlugs = `
       }
     }
   },
-`
+`;
 
-export const getPostBySlug = async (
-	slug: string | string[],
-	preview: boolean
-) => {
-	const curClient = getClient(preview)
+export const getPostBySlug = async (slug: string | string[], preview: boolean) => {
+	const curClient = getClient(preview);
 	const [post] = await Promise.all([
 		curClient.fetch(
 			`
@@ -74,20 +71,20 @@ export const getPostBySlug = async (
       }`,
 			{ slug }
 		),
-	])
-	return post[0]
-}
+	]);
+	return post[0];
+};
 
 const getClient = (preview: boolean) => {
-	return preview ? previewClient : client
-}
+	return preview ? previewClient : client;
+};
 
 export const getAllPostsWithSlug = async () => {
 	const data = await client.fetch(`
     *[_type == 'post']{ 'slug': slug.current }
-  `)
-	return data
-}
+  `);
+	return data;
+};
 
 export const getPreviewPostBySlug = async (slug: string) => {
 	const data = await getClient(true).fetch(
@@ -97,28 +94,25 @@ export const getPreviewPostBySlug = async (slug: string) => {
       ${bodyWithLinkSlugs}
     }`,
 		{ slug }
-	)
-	return data[0]
-}
+	);
+	return data[0];
+};
 
 export const getAllPostsForNav = async (preview: boolean) => {
-	const results = await getClient(preview).fetch(pageQuery)
-	return getUniquePages(results)
-}
+	const results = await getClient(preview).fetch(pageQuery);
+	return getUniquePages(results);
+};
 
 export const getAllPosts = async (preview: boolean) => {
 	const results = await getClient(preview).fetch(`
     *[_type == "post"] | order(date desc, _updatedAt desc) {
       ${postFields}
-    }`)
-	return getUniquePosts(results)
-}
+    }`);
+	return getUniquePosts(results);
+};
 
-export const getPostAndMorePosts = async (
-	slug: string | string[],
-	preview: boolean
-) => {
-	const curClient = getClient(preview)
+export const getPostAndMorePosts = async (slug: string | string[], preview: boolean) => {
+	const curClient = getClient(preview);
 	const [post, morePosts] = await Promise.all([
 		curClient
 			.fetch(
@@ -145,6 +139,6 @@ export const getPostAndMorePosts = async (
       }[0...2]`,
 			{ slug }
 		),
-	])
-	return { post, morePosts: getUniquePosts(morePosts) }
-}
+	]);
+	return { post, morePosts: getUniquePosts(morePosts) };
+};

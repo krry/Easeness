@@ -1,4 +1,4 @@
-const withPWA = require('next-pwa')
+const withPWA = require('next-pwa');
 
 module.exports = withPWA({
 	pwa: {
@@ -11,12 +11,9 @@ module.exports = withPWA({
 	images: {
 		domains: ['cdn.sanity.io'],
 	},
-	exportPathMap: async function (
-		defaultPathMap,
-		{ dev, dir, outDir, distDir, buildId }
-	) {
+	exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
 		return {
 			'/': { page: '/' },
-		}
+		};
 	},
-})
+});

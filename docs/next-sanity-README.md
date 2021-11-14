@@ -97,11 +97,11 @@ Go to https://www.sanity.io/docs/preview-content-on-site and follow the three st
 When you get to the second step about creating a file called `resolveProductionUrl.js`, copy the following instead:
 
 ```js
-const previewSecret = 'MY_SECRET' // Copy the string you used for SANITY_PREVIEW_SECRET
-const projectUrl = 'http://localhost:3000'
+const previewSecret = 'MY_SECRET'; // Copy the string you used for SANITY_PREVIEW_SECRET
+const projectUrl = 'http://localhost:3000';
 
 export default function resolveProductionUrl(document) {
-	return `${projectUrl}/api/preview?secret=${previewSecret}&slug=${document.slug.current}`
+	return `${projectUrl}/api/preview?secret=${previewSecret}&slug=${document.slug.current}`;
 }
 ```
 

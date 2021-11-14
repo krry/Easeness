@@ -1,49 +1,50 @@
-import cn from 'classnames'
-import { motion, useAnimation } from 'framer-motion'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import cn from 'classnames';
+import { motion, useAnimation } from 'framer-motion';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-import { imageBuilder } from '../lib/sanity'
+import { imageBuilder } from '../lib/sanity';
 
 type FIProps = {
-	title: string
-	url: string
-	slug?: string
-	classes?: string
-}
+	title: string;
+	url: string;
+	slug?: string;
+	classes?: string;
+};
 
 interface SrcEvent {
-	target: { src: string }
+	target: { src: string };
 }
 // had to specialize the type as described here: https://stackoverflow.com/questions/47266836/how-to-use-onload-event-from-image-in-typescript
 function isSrcEvent(e: any): e is SrcEvent {
-	return e && e.target.src !== undefined
+	return e && e.target.src !== undefined;
 }
 
 const animationVariants = {
 	visible: { opacity: 1, scale: 1 },
 	hidden: { opacity: 0, scale: 1.5 },
-}
+};
 
 // TODO: can we use next-sanity-image to speed up image loads and make them responsive? https://github.com/bundlesandbatches/next-sanity-image
 
 const FramerImage = (props: FIProps) => {
-	const [loaded, setLoaded] = useState(false)
-	const animationControls = useAnimation()
-	const { title, url, slug } = props
+	const [loaded, setLoaded] = useState(false);
+	const animationControls = useAnimation();
+	const { title, url, slug } = props;
 
 	useEffect(() => {
 		if (loaded) {
-			animationControls.start('visible')
+			animationControls.start('visible');
 		}
-	}, [loaded, animationControls])
+	}, [loaded, animationControls]);
 
 	return (
 		<motion.div
 			initial={'hidden'}
 			animate={animationControls}
 			variants={animationVariants}
-			transition={{ ease: 'easeOut', duration: 0.75 }}>
+			transition={{ ease: 'easeOut', duration: 0.75 }}
+		>
 			<Image
 				width={1920}
 				height={960}
@@ -54,17 +55,17 @@ const FramerImage = (props: FIProps) => {
 				src={imageBuilder.image(url).height(1000).width(2000).url()}
 				onLoad={event => {
 					if (isSrcEvent(event)) {
-						const target = event.target
+						const target = event.target;
 
 						// next/image use an 1x1 px git as placeholder. We only want the onLoad event on the actual image
 						if (target.src.indexOf('data:image/gif;base64') < 0) {
-							setLoaded(true)
+							setLoaded(true);
 						}
 					}
 				}}
 			/>
 		</motion.div>
-	)
-}
+	);
+};
 
-export default FramerImage
+export default FramerImage;

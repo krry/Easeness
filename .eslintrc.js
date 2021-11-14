@@ -1,13 +1,8 @@
 module.exports = {
 	extends: [
-		'prettier',
 		'eslint:recommended',
-		'plugin:react/recommended',
-		'plugin:prettier/recommended',
-		'prettier/@typescript-eslint',
-		'plugin:react-hooks/recommended',
 		'plugin:@typescript-eslint/recommended',
-		'plugin:@typescript-eslint/eslint-recommended',
+		'plugin:prettier/recommended',
 	],
 	env: {
 		node: true,
@@ -17,6 +12,7 @@ module.exports = {
 	plugins: [
 		'react',
 		'import',
+		'jsx-a11y',
 		'prettier',
 		'react-hooks',
 		'@asbjorn/groq',
@@ -24,17 +20,16 @@ module.exports = {
 	],
 	rules: {
 		indentation: 0,
+		'linebreak-style': ['error', 'unix'],
 		'react/prop-types': 'off',
 		'react/react-in-jsx-scope': 'off',
+		'simple-import-sort/sort': 'error',
 		'@asbjorn/groq/no-syntax-errors': 'error',
 		'@asbjorn/groq/no-syntax-errors': 'error',
 		'@asbjorn/groq/no-template-expressions': 'error',
-		'linebreak-style': ['error', 'unix'],
-		'jsx-quotes': ['error', 'prefer-single'],
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/no-explicit-any': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
-		'simple-import-sort/sort': 'error',
 	},
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
@@ -49,4 +44,4 @@ module.exports = {
 			version: 'detect',
 		},
 	},
-}
+};

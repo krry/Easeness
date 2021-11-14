@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // tailwind.config.js
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 // const plugin = require('tailwindcss/plugin')
 
 module.exports = {
@@ -22,8 +22,12 @@ module.exports = {
 		colors: {
 			inherit: 'inherit',
 			transparent: 'transparent',
-			screen: 'hsla(172, 50%, 96%, 0.39)',
-			shadow: 'hsla(233, 50%, 4%, 0.39)',
+			whisp: 'hsla(172, 50%, 96%, 0.0618)',
+			gleam: 'hsla(172, 50%, 96%, 0.1618)',
+			screen: 'hsla(172, 50%, 96%, 0.382)',
+			haunt: 'hsla(233, 50%, 4%, 0.0618)',
+			shade: 'hsla(233, 50%, 4%, 0.1618)',
+			shadow: 'hsla(233, 50%, 4%, 0.382)',
 			black: '#05090a',
 			white: '#fff',
 			gray: {
@@ -142,7 +146,7 @@ module.exports = {
 				50: '50rem',
 			},
 			borderWidth: {
-				'3vh': '2vh',
+				bevel: '1.618vh',
 			},
 			borderStyle: {
 				inset: 'inset',
@@ -179,4 +183,4 @@ module.exports = {
 		},
 	},
 	purge: ['./pages/**/*.{js,jsx,ts,tsx}', './components/**/*.{js,jsx,ts,tsx}'],
-}
+};
