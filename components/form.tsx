@@ -5,7 +5,7 @@ export default function Form({ _id }) {
 	const [formData, setFormData] = useState({ name: '', email: '', comment: '' });
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [hasSubmitted, setHasSubmitted] = useState(false);
-	const { register, handleSubmit, errors } = useForm();
+	const { register, handleSubmit } = useForm();
 
 	const onSubmit = async (data: (prevState: undefined) => undefined) => {
 		const requestHeaders: HeadersInit = new Headers();
@@ -50,14 +50,14 @@ export default function Form({ _id }) {
 	return (
 		<section className="max-w-full mx-auto md:max-w-2xl lg:max-w-4xl">
 			<form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg mx-auto">
-				<input ref={register} type="hidden" name="_id" value={_id} />
+				<input {...register('_id')} type="hidden" name="_id" value={_id} />
 				<div className="flex flex-row gap-x-8">
 					<div className="w-1/2 field">
 						<label className="block mb-5">
 							<span className="text-sm font-bold tracking-wide text-gray-800">Call me…</span>
 							<input
 								name="name"
-								ref={register({ required: true })}
+								{...register('name', { required: 'This field is required' })}
 								className="input form-input"
 								placeholder="Kerrbear"
 							/>
@@ -69,7 +69,7 @@ export default function Form({ _id }) {
 							<input
 								name="email"
 								type="email"
-								ref={register({ required: true })}
+								{...register('email', { required: 'This field is required' })}
 								className="input form-input"
 								placeholder="your@email.com"
 							/>
@@ -84,15 +84,13 @@ export default function Form({ _id }) {
 						What would you like to share with us?
 					</span>
 					<textarea
-						ref={register({ required: true })}
+						{...register('comment', { required: 'This field is required' })}
 						name="comment"
 						className="input form-textarea"
 						rows={8}
 						placeholder="Insights, perspectives, stories, understandings…"
 					></textarea>
 				</label>
-				{/* errors will return when field validation fails  */}
-				{errors.exampleRequired && <span>This field is required</span>}
 				<button type="submit" className="btn wide">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

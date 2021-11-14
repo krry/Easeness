@@ -10,13 +10,8 @@
 		"start": "next build; next start",
 		"lint": "eslint ./ --fix --ext ts,tsx,js",
 		"format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}'",
+		"prepare": "husky install",
 		"rehearse": "yarn lint && yarn format && yarn build"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run lint && npm run format",
-			"pre-push": "npm run build"
-		}
 	},
 	"browserslist": {
 		"production": [
@@ -64,7 +59,7 @@
 		"@asbjorn/eslint-plugin-groq": "^1.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.3.1",
 		"@typescript-eslint/parser": "^5.3.1",
-		"eslint": "^8.2.0",
+		"eslint": "<8.0.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-import": "^2.25.3",
 		"eslint-plugin-jsx-a11y": "^6.5.1",
